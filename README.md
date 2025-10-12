@@ -8,6 +8,7 @@
 - ✅ [原神官网首页](https://ys.mihoyo.com)
 - ✅ [「空月之歌」](https://ys.mihoyo.com/moon)
 - ✅ [「空月之歌」挪德卡莱概念站](https://act.mihoyo.com/ys/event/e20250723light-uowufz/index.html)
+- ✅ [始于挪德卡莱](https://act.mihoyo.com/ys/event/e20250829reserve-6htzhx/index.html)
 
 ## **环境**
 
