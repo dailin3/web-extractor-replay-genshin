@@ -109,8 +109,12 @@ def extract_from_har(har_file, project_dir, mapping_file, timeout=10):
     for url, entry in unique_entries_map.items():
         request = entry.get("request", {})
         method = request.get("method", "GET").upper()
+        response_content_info = entry.get("response", {}).get("content", {})
+        mime_type = response_content_info.get("mimeType", "")
 
-        if method == "GET":
+        is_json_api = 'application/json' in mime_type.lower()
+
+        if method == "GET" and not is_json_api:
             mime_type = entry.get("response", {}).get("content", {}).get("mimeType", "")
 
             filename = safe_filename(url, mime_type)
@@ -134,11 +138,12 @@ def extract_from_har(har_file, project_dir, mapping_file, timeout=10):
                 if url == entry_point_url:
                     output_data["entry_point"]["origin"] = url
                     output_data["entry_point"]["local_file"] = relative_path
-        elif method == 'POST':
+        elif method == 'POST' or (is_json_api and method == 'GET'):
             response_content = entry.get("response", {}).get("content", {}).get("text", "")
+            mime_info = "[POST]" if method == 'POST' else "[GET API]"
             # 如果响应内容为空，则跳过
             if not response_content:
-                print(f"⏩ [POST] 跳过空响应请求: {url}")
+                print(f"⏩ {mime_info} 跳过空响应请求: {url}")
                 continue
 
             # 为POST响应创建一个安全的文件名
@@ -153,12 +158,12 @@ def extract_from_har(har_file, project_dir, mapping_file, timeout=10):
 
                 relative_path = os.path.relpath(mock_filepath, project_dir)
                 output_data["url_mapping"][url] = {
-                    "method": "POST",
+                    "method": method,
                     "local_file": relative_path
                 }
-                print(f"✅ [POST] 响应已保存: {url} -> {mock_filepath}")
+                print(f"✅ {mime_info} 响应已保存: {url} -> {mock_filepath}")
             except (json.JSONDecodeError, TypeError):
-                print(f"❌ [POST] 响应不是有效的JSON，已跳过: {url}")
+                print(f"❌ {mime_info} 响应不是有效的JSON，已跳过: {url}")
 
     # 保存映射表
     mapping_path = os.path.join(project_dir, mapping_file)

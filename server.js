@@ -5,6 +5,9 @@ const { spawn } = require("child_process");
 const { Command } = require("commander");
 const Proxy = require("http-mitm-proxy").Proxy;
 
+const specialRules = require('./special_rules');
+const { findBestMatch } = require('./utils')
+
 
 // 命令行参数解析
 const program = new Command();
@@ -76,8 +79,43 @@ proxy.onRequest((ctx, callback)=> {
 
     console.log(`📡 请求: ${fullUrl}`);
 
-    const mappingInfo = urlMapping[fullUrl];
+    // 处理CORS预检
+    if (ctx.clientToProxyRequest.method.toUpperCase() === 'OPTIONS') {
+        // if (urlMapping[fullUrl]) {
+        if (1) {
+            console.log(`✅ 命中CORS预检(OPTIONS)，直接响应`);
+
+            // 直接返回成功的响应和CORS头
+            ctx.proxyToClientResponse.writeHead(204, { // 204 No Content 是处理OPTIONS的常用状态码
+                'Access-Control-Allow-Origin': ctx.clientToProxyRequest.headers["origin"] || "*",
+                'Access-Control-Allow-Credentials': 'true',
+                'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS', // 允许所有常用方法
+                'Access-Control-Allow-Headers': ctx.clientToProxyRequest.headers['access-control-request-headers'] || '*', // 允许浏览器请求的所有头
+                'Access-Control-Max-Age': 86400, // 预检请求的缓存时间（秒）
+                'Content-Length': '0'
+            });
+            ctx.proxyToClientResponse.end();
+            return; // 必须 return，中断后续处理
+        }
+    }
+
+    // 特殊规则
+    for (const rule of specialRules) {
+        if (rule.test(fullUrl)) {
+            console.log(`✅ [规则命中] 触发特殊规则: "${rule.name}"`);
+            rule.handler(ctx);
+            return;
+        }
+    }
+
+    // 通用映射规则
+    if (fullUrl.startsWith('https://act-hk4e-api.mihoyo.com/event/e20250829return/index')) {
+        console.log('DEBUG')
+    }
+    const mappingInfo = findBestMatch(fullUrl, urlMapping);
     if (mappingInfo) {
+        console.log(`✅ 本地命中 (通过灵活匹配): ${fullUrl}`);
+        console.log(`   -> 匹配规则: ${mappingInfo.originalUrl}`);
         // 命中本地资源
         const requestMethod = ctx.clientToProxyRequest.method.toUpperCase();
         const mappingMethod = mappingInfo.method.toUpperCase();
@@ -113,7 +151,7 @@ proxy.onRequest((ctx, callback)=> {
     }
 
     // 未命中，如果是需要回源到指定域名下的请求，就伪装它的 Origin 和 Referer
-    if (!urlMapping[fullUrl] && spoofHeaders.enabled){
+    if (!mappingInfo && spoofHeaders.enabled){
         const shouldSpoof = spoofHeaders.targetDomains.some(domain => fullUrl.includes(domain));
         if (shouldSpoof){
             // 修改 Origin 和 Referer 头，让服务器以为是合法来源
@@ -168,51 +206,51 @@ proxy.onResponse((ctx, callback) => {
 // ==========================================================
 // 创建并配置 Express Web 服务器
 // ==========================================================
-const app = express();
-// 中间件，处理相对路径
-app.use((req, res, next) => {
-    const requestedPath = decodeURIComponent(req.url);
-    const requester = req.headers.referer || 'Unknown (Direct Request)';
-    console.log(`[Web Server] Request for: ${requestedPath} | From: ${requester}`);
-    const matches = [];
-
-    // 遍历映射表中的所有原始 URL
-    for (const originalUrl in urlMapping) {
-        try {
-            const parsedUrl = new URL(originalUrl);
-            // 比较路径部分是否与当前请求的路径匹配
-            let parts = requestedPath.split('/')
-            let filtered_parts = parts.filter(part => part !== 'assets');
-            if (originalUrl === requestedPath || (requestedPath.startsWith("/assets") && originalUrl.endsWith(filtered_parts.join('/')))) {
-                if (urlMapping[originalUrl].method.toUpperCase() === 'GET'){
-                    matches.push(urlMapping[originalUrl].local_file);
-                }
-            }
-        } catch (e) {
-            // 忽略无法解析的 URL
-        }
-    }
-
-    // 如果且仅如果找到一个唯一的匹配项
-    if (matches.length === 1) {
-        const localFile = matches[0];
-        const fullPath = path.resolve(projectDir, localFile);
-
-        if (fs.existsSync(fullPath)) {
-            console.log(`✅ [Web Server] 动态命中: ${req.url} -> ${localFile}`);
-            // 直接发送文件，Express 会自动设置正确的 Content-Type
-            return res.sendFile(fullPath);
-        }
-    }
-
-    // 如果没有找到或找到多个匹配项，则交给下一个中间件处理
-    if (matches.length > 1) {
-        console.warn(`⚠️ [Web Server] 发现模糊匹配: ${req.path} 有 ${matches.length} 个可能的本地文件。`);
-    }
-
-    next();
-});
-app.use(express.static(projectDir));
+// const app = express();
+// // 中间件，处理相对路径
+// app.use((req, res, next) => {
+//     const requestedPath = decodeURIComponent(req.url);
+//     const requester = req.headers.referer || 'Unknown (Direct Request)';
+//     console.log(`[Web Server] Request for: ${requestedPath} | From: ${requester}`);
+//     const matches = [];
+//
+//     // 遍历映射表中的所有原始 URL
+//     for (const originalUrl in urlMapping) {
+//         try {
+//             const parsedUrl = new URL(originalUrl);
+//             // 比较路径部分是否与当前请求的路径匹配
+//             let parts = requestedPath.split('/')
+//             let filtered_parts = parts.filter(part => part !== 'assets');
+//             if (originalUrl === requestedPath || (requestedPath.startsWith("/assets") && originalUrl.endsWith(filtered_parts.join('/')))) {
+//                 if (urlMapping[originalUrl].method.toUpperCase() === 'GET'){
+//                     matches.push(urlMapping[originalUrl].local_file);
+//                 }
+//             }
+//         } catch (e) {
+//             // 忽略无法解析的 URL
+//         }
+//     }
+//
+//     // 如果且仅如果找到一个唯一的匹配项
+//     if (matches.length === 1) {
+//         const localFile = matches[0];
+//         const fullPath = path.resolve(projectDir, localFile);
+//
+//         if (fs.existsSync(fullPath)) {
+//             console.log(`✅ [Web Server] 动态命中: ${req.url} -> ${localFile}`);
+//             // 直接发送文件，Express 会自动设置正确的 Content-Type
+//             return res.sendFile(fullPath);
+//         }
+//     }
+//
+//     // 如果没有找到或找到多个匹配项，则交给下一个中间件处理
+//     if (matches.length > 1) {
+//         console.warn(`⚠️ [Web Server] 发现模糊匹配: ${req.path} 有 ${matches.length} 个可能的本地文件。`);
+//     }
+//
+//     next();
+// });
+// app.use(express.static(projectDir));
 
 // ==========================================================
 // 启动所有服务和浏览器
@@ -238,8 +276,10 @@ function launchBrowser(){
         fs.mkdirSync(tempProfileDir);
     }
 
-    const entryPointFile = entryPoint.local_file;
-    const startUrl = `${BROWSER_ORIGIN}/${entryPointFile}`;
+    // const entryPointFile = entryPoint.local_file;
+    // const startUrl = `${BROWSER_ORIGIN}/${entryPointFile}`;
+
+    const startUrl = entryPoint.origin;
 
     const browserArgs = [
         `--user-data-dir=${tempProfileDir}`,
@@ -261,13 +301,20 @@ function launchBrowser(){
 
     spawn(executablePath, browserArgs, { detached: true, stdio: "ignore" });
 }
-proxy.listen({port: PROXY_PORT, host: '127.0.0.1'}, () => {
+
+// proxy.listen({port: PROXY_PORT, host: '127.0.0.1'}, () => {
+//     console.log(`🚀 MITM 代理启动中: http://127.0.0.1:${PROXY_PORT}`);
+//
+//     app.listen(WEB_PORT, () => {
+//         console.log(`🚀 本地 Web 服务器启动于: ${BROWSER_ORIGIN}`);
+//         console.log(`📂 项目 "${projectDir}" 的内容已托管。`);
+//
+//         launchBrowser();
+//     });
+// });
+proxy.listen({port: PROXY_PORT,host: '127.0.0.1'},() => {
     console.log(`🚀 MITM 代理启动中: http://127.0.0.1:${PROXY_PORT}`);
+    console.log(`📂 本地资源目录: "${projectDir}"`);
 
-    app.listen(WEB_PORT, () => {
-        console.log(`🚀 本地 Web 服务器启动于: ${BROWSER_ORIGIN}`);
-        console.log(`📂 项目 "${projectDir}" 的内容已托管。`);
-
-        launchBrowser();
-    });
+    launchBrowser();
 });
