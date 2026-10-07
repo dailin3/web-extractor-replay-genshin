@@ -4,7 +4,11 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node replay/server.js",
+    "test": "node --test tests/*.test.js",
+    "verify:visual": "node scripts/verify-visual.cjs",
+    "verify:browser": "node scripts/browser-smoke.cjs",
+    "verify:live": "node scripts/verify-live-source.cjs"
   },
   "private": true,
   "dependencies": {

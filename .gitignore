@@ -5,3 +5,10 @@
 /node_modules/
 /my-ca/
 /account.json
+/.codegraph/
+/edge-temp-profile2/
+/config.mac.json
+/.DS_Store
+/**/.DS_Store
+/artifacts/
+/replay-screenshot.png
