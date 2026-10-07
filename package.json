@@ -1,0 +1,15 @@
+{
+  "name": "web-extracor-and-cloner-genshin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "private": true,
+  "dependencies": {
+    "commander": "^14.0.3",
+    "express": "^5.2.1",
+    "http-mitm-proxy": "^1.1.0"
+  }
+}

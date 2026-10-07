@@ -1,0 +1,22 @@
+{
+  "python": {
+    "timeout": 10
+  },
+  "server": {
+    "proxyPort": 3000,
+    "webPort": 3001,
+    "sslCaDir": "my-ca"
+  },
+  "proxyRules": {
+    "spoofHeaders": {
+      "enabled": true,
+      "targetDomains": ["mihoyo.com", "hoyoverse.com"],
+      "fakeOrigin": "auto"
+    }
+  },
+  "browser": {
+    "autoLaunch": true,
+    "executablePath": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+    "ignoreCertErrors": true
+  }
+}
