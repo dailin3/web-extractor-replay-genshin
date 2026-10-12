@@ -280,18 +280,26 @@ try {
       ["auto", "auto", "auto", "auto"],
     );
     const audio = page.locator(".audio-button");
+    const waitAudioIcons = () =>
+      page.waitForFunction(() =>
+        [...document.querySelectorAll(".audio-button img")].every(
+          (image) => image.complete && image.naturalWidth > 0,
+        ),
+      );
     await audio.click();
     const muted = await audio.getAttribute("aria-pressed");
     const mutedRuntime = await page.evaluate(
       async (engineUrl) => (await import(engineUrl)).Howler._muted,
       engineUrl,
     );
+    await waitAudioIcons();
     await audio.click();
     const unmuted = await audio.getAttribute("aria-pressed");
     const unmutedRuntime = await page.evaluate(
       async (engineUrl) => (await import(engineUrl)).Howler._muted,
       engineUrl,
     );
+    await waitAudioIcons();
     report.state = await page.evaluate(() => ({
       phase: window.__moonApp.state.phase,
       completed: window.__moonApp.player.scenes.scene_moon.enableMoonStars,

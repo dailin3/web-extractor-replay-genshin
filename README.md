@@ -6,6 +6,8 @@
 
 ## 「空月之歌」开场和月亮首屏重构
 
+[在线预览](https://dailin3.github.io/web-extractor-replay-genshin/)。
+
 `npm start` 启动可读重构版，打开 http://127.0.0.1:4174。
 
 运行所需的104份原二进制素材已打包到 `app/local-assets/`，克隆重构分支后执行 `npm ci` 即可启动。
