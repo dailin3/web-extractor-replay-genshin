@@ -6,6 +6,11 @@
   "scripts": {
     "start": "node app-server.cjs",
     "start:reference": "node replay/server.js",
+    "build": "node tools/build-site.cjs",
+    "build:pages": "node tools/build-site.cjs --base /web-extractor-replay-genshin/",
+    "predeploy:pages": "npm run build:pages",
+    "deploy:pages": "gh-pages -d dist --dotfiles -m \"Deploy reconstructed moon opening and first scene\"",
+    "pack:assets": "node tools/pack-assets.cjs",
     "test": "node --test tests/*.test.js tests/*.test.cjs app/engine/*.test.cjs",
     "extract": "node tools/extract-engine.cjs && node tools/extract-scene.cjs",
     "verify:visual": "node scripts/verify-reconstruction.cjs",
@@ -25,6 +30,7 @@
   },
   "devDependencies": {
     "acorn": "^8.19.0",
+    "gh-pages": "6.3.0",
     "prettier": "^3.9.9"
   }
 }

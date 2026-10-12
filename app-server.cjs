@@ -1,7 +1,11 @@
 const express = require("express");
 const http = require("node:http");
 const path = require("node:path");
-const { createResourceMap } = require("./replay/resource-map");
+const fs = require("node:fs");
+const {
+  createResourceMap,
+  DEFAULT_PROJECT_DIR,
+} = require("./replay/resource-map");
 
 const BINARY_ASSETS = new Set([
   ".png",
@@ -16,9 +20,15 @@ const BINARY_ASSETS = new Set([
 ]);
 
 /** Serve authored application modules and original binary art; never execute a captured bundle. */
-function createAppServer() {
+function createAppServer({
+  appDir = path.join(__dirname, "app"),
+  projectDir = DEFAULT_PROJECT_DIR,
+} = {}) {
   const application = express();
-  const resources = createResourceMap();
+  const resources =
+    projectDir && fs.existsSync(path.join(projectDir, "url_mapping.json"))
+      ? createResourceMap(projectDir)
+      : null;
   application.disable("x-powered-by");
   application.use((request, response, next) => {
     response.set(
@@ -29,17 +39,30 @@ function createAppServer() {
     next();
   });
   application.use("/local-assets", (request, response) => {
-    const record = resources.resolveRequest("/local-assets" + request.url);
-    if (!record) return response.status(404).end("Asset not captured");
-    if (!BINARY_ASSETS.has(path.extname(record.filePath)))
+    let name;
+    try {
+      name = decodeURIComponent(
+        new URL(request.url, "http://localhost").pathname,
+      ).slice(1);
+    } catch {
+      return response.status(404).end("Asset not found");
+    }
+    if (!name || /[/\\]/.test(name))
+      return response.status(404).end("Asset not found");
+    const bundledPath = path.resolve(appDir, "local-assets", name);
+    const record = resources?.resolveRequest("/local-assets" + request.url);
+    const filePath =
+      fs.existsSync(bundledPath) && fs.statSync(bundledPath).isFile()
+        ? bundledPath
+        : record?.filePath;
+    if (!filePath) return response.status(404).end("Asset not found");
+    if (!BINARY_ASSETS.has(path.extname(filePath)))
       return response
         .status(403)
         .end("Original executable bundles are reference-only");
-    response.sendFile(record.filePath);
+    response.sendFile(filePath);
   });
-  application.use(
-    express.static(path.join(__dirname, "app"), { etag: false, maxAge: 0 }),
-  );
+  application.use(express.static(appDir, { etag: false, maxAge: 0 }));
   application.use((request, response) =>
     response.status(404).end("File not found"),
   );
@@ -48,8 +71,9 @@ function createAppServer() {
 
 if (require.main === module) {
   const port = Number(process.env.PORT || 4174);
-  createAppServer().listen(port, "127.0.0.1", () =>
-    console.log(`Readable moon reconstruction: http://127.0.0.1:${port}`),
+  const host = process.env.HOST || "127.0.0.1";
+  createAppServer().listen(port, host, () =>
+    console.log(`Readable moon reconstruction: http://${host}:${port}`),
   );
 }
 module.exports = { createAppServer };

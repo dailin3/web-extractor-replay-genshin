@@ -3,6 +3,7 @@ const { createRequire } = require("node:module");
 const assert = require("node:assert/strict");
 const fs = require("node:fs");
 const path = require("node:path");
+const { findExternalRequests } = require("./site-origin.cjs");
 let chromium;
 try {
   ({ chromium } = require("playwright"));
@@ -25,7 +26,10 @@ try {
       "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
     headless: true,
   });
-  const output = path.resolve("artifacts/reconstruction-smoke");
+  const output = path.resolve(
+    process.env.RECON_SMOKE_OUTPUT || "artifacts/reconstruction-smoke",
+  );
+  const entryUrl = process.env.RECONSTRUCTION_URL || "http://127.0.0.1:4174";
   fs.mkdirSync(output, { recursive: true });
   const report = {
     console: [],
@@ -74,7 +78,7 @@ try {
         }),
       );
     });
-    await page.goto(process.env.RECONSTRUCTION_URL || "http://127.0.0.1:4174", {
+    await page.goto(entryUrl, {
       waitUntil: "domcontentloaded",
     });
     await page.waitForFunction(
@@ -83,6 +87,9 @@ try {
       { timeout: 60000 },
     );
     assert.equal(await page.evaluate(() => window.__moonApp.status), "ready");
+    const engineUrl = await page
+      .locator('script[type="module"]')
+      .evaluate((element) => new URL("./engine/index.js", element.src).href);
     await page.screenshot({ path: path.join(output, "loading.png") });
     const startedAt = Date.now();
     await page.locator(".start-hint").click();
@@ -175,8 +182,8 @@ try {
     await page.locator(".rules-button").click();
     await rules.waitFor({ state: "visible" });
     const playerClock = () =>
-      page.evaluate(async () => {
-        const { gsap } = await import("/engine/index.js");
+      page.evaluate(async (engineUrl) => {
+        const { gsap } = await import(engineUrl);
         const { player } = window.__moonApp;
         return {
           time: player.uniformSetting.time.value,
@@ -185,7 +192,7 @@ try {
           clockRunning: player.clock.running,
           clockOldTime: player.clock.oldTime,
         };
-      });
+      }, engineUrl);
     const openedClock = await playerClock();
     await page.waitForTimeout(400);
     const pausedClock = await playerClock();
@@ -276,12 +283,14 @@ try {
     await audio.click();
     const muted = await audio.getAttribute("aria-pressed");
     const mutedRuntime = await page.evaluate(
-      async () => (await import("/engine/index.js")).Howler._muted,
+      async (engineUrl) => (await import(engineUrl)).Howler._muted,
+      engineUrl,
     );
     await audio.click();
     const unmuted = await audio.getAttribute("aria-pressed");
     const unmutedRuntime = await page.evaluate(
-      async () => (await import("/engine/index.js")).Howler._muted,
+      async (engineUrl) => (await import(engineUrl)).Howler._muted,
+      engineUrl,
     );
     report.state = await page.evaluate(() => ({
       phase: window.__moonApp.state.phase,
@@ -300,10 +309,7 @@ try {
         url,
       ),
     );
-    report.externalRequests = report.requests.filter(
-      ({ url }) =>
-        /^https?:/.test(url) && new URL(url).hostname !== "127.0.0.1",
-    );
+    report.externalRequests = findExternalRequests(report.requests, entryUrl);
     assert.deepEqual(
       report.console.filter(({ type }) => type === "error"),
       [],
