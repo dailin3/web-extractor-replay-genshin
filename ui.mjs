@@ -232,10 +232,13 @@ export function createUI({
     if (show && !state.rulesOpen) {
       focusBeforeRules = document.activeElement;
     }
+    // Resume the scene as closing begins; keep rulesOpen until the mask leaves
+    // so keyboard and pointer input cannot reach the still-covered hotspots.
     if (show !== rulesScenePaused) {
       rulesScenePaused = show;
       onRulesChange(show);
     }
+    // Reopening during exit invalidates the pending hide/focus restoration.
     const motion = ++rulesMotion;
     clearTimeout(rulesTimer);
     state.rulesOpen = true;
@@ -279,6 +282,8 @@ export function createUI({
   }
 
   function revealWithFade(element) {
+    // Two RAFs give the initial class its own style flush. One RAF starts the
+    // fade in the same flush and advances the native animation by one frame.
     element.hidden = false;
     element.classList.add("fade-enter", "fade-enter-active");
     requestAnimationFrame(() =>
@@ -332,6 +337,7 @@ export function createUI({
       target.tabIndex = visible.hotspots ? 0 : -1;
     });
     if (guideIndex !== visible.guideIndex) {
+      // Match the original next-tick guide's CSS animation birth, not just visibility.
       guideIndex = visible.guideIndex;
       const motion = ++guideMotion;
       hotspots.forEach((target) => target.classList.remove("show-hint"));
@@ -346,6 +352,7 @@ export function createUI({
   }
 
   function setLoading(value) {
+    // Only the number is floored; the SVG fan follows fractional loader progress.
     const rawProgress = Math.max(0, Math.min(100, value));
     progress = Math.floor(rawProgress);
     const displayedProgress = String(progress);
@@ -383,6 +390,8 @@ export function createUI({
   }
 
   async function hideLoading({ duration = 500 } = {}) {
+    // OpeningFlow passes zero after fading the parent compositor, avoiding a
+    // second DOM fade with a separate clock and removal deadline.
     loading.style.transition = `opacity ${duration}ms`;
     loading.style.pointerEvents = "none";
     loading.style.opacity = "0";
