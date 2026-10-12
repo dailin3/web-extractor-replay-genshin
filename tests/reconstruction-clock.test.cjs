@@ -70,6 +70,30 @@ test('the verifier URL respects the documented variable and retains the legacy a
   assert.equal(getUrl({ RECONSTRUCTION_URL: 'http://127.0.0.1:9001', RECON_URL: 'http://127.0.0.1:9000' }), 'http://127.0.0.1:9001');
 });
 
+test('the default visual run covers both desktop densities and preserves explicit viewport overrides', () => {
+  const viewports = verifierHelper('getViewportConfigs');
+  assert.equal(JSON.stringify(viewports({})), '[{"width":1200,"height":660,"dpr":1},{"width":1920,"height":1080,"dpr":2}]');
+  assert.equal(JSON.stringify(viewports({ RECON_VIEWPORTS: '[{"width":800,"height":720,"dpr":3}]' })), '[{"width":800,"height":720,"dpr":3}]');
+});
+
+test('wheel capture waits for the original and authored text transition before advancing virtual frames', async () => {
+  const waitForWheelResponse = verifierHelper('waitForWheelResponse');
+  for (const local of [false, true]) {
+    const moon = { textState: 'animationEnd' };
+    const effect = { player: { scenes: { scene_moon: moon } } };
+    const window = local ? { __moonApp: effect } : { Vue: { prototype: { $effectVue: effect } } };
+    let waits = 0;
+    await waitForWheelResponse({ waitForFunction: async predicate => {
+      waits++;
+      const evaluate = () => vm.runInNewContext(`(${predicate.toString()})()`, { window });
+      assert.equal(evaluate(), false, 'the idle text state must not count as delivered wheel input');
+      moon.textState = 'animationOut';
+      assert.equal(evaluate(), true, 'the native dissolve state confirms that the wheel handler ran');
+    } });
+    assert.equal(waits, 1);
+  }
+});
+
 test('a one-code loading difference is a failure, like every other pixel mismatch', () => {
   const mismatches = verifierHelper('getVisualMismatches');
   const report = { scenarios: [{ label: '1200x660@1', checkpoints: [

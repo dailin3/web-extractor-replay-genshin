@@ -28,6 +28,9 @@ npm run verify:live       # 官方视觉源文件SHA256核对
 
 视觉验证使用 Playwright、pngjs 和 Chrome，优先使用已安装或 Codex 自带依赖。可设置 `BROWSER_MODULES`、`CHROME_PATH`、`RECONSTRUCTION_URL`。截图和报告位于 `artifacts/reconstruction/` 与 `artifacts/reconstruction-smoke/`。原回放验证报告不能替代重构版验收。结构与验证说明见 [docs/phase-one.md](docs/phase-one.md)。
 
+当前50项自动测试通过；双尺寸主流程最新29/30个检查点零差，简介18/18零差。
+早期加载淡出仍有一个色阶的少量差异，严格零容差验收尚未通过；原站自身的同源控制也观察到同量级波动。详见上述验收说明。
+
 素材版权归米哈游，本项目用于本地研究。
 
 以下网页已经过测试可行（）：

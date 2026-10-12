@@ -73,6 +73,26 @@ try {
       Math.abs(Number(point[2]) - 103.14107590781282) < 1e-9,
       "the SVG fan advances beyond the quarter-circle while the label is floored",
     );
+    const progressUpdates = await page.evaluate(() => {
+      const label = document.querySelector(".loading-progress");
+      const text = label.firstChild;
+      const container = document.querySelector(".loading-container");
+      const observer = new MutationObserver(() => {});
+      observer.observe(container, { attributes: true, childList: true, characterData: true, subtree: true });
+      ui.setLoading(25.5);
+      const repeatedMutations = observer.takeRecords().length;
+      ui.setLoading(25.75);
+      const fractionalMutations = observer.takeRecords().map(record => record.target.nodeName);
+      ui.setLoading(26);
+      const preservesTextNode = label.firstChild === text;
+      observer.disconnect();
+      return { repeatedMutations, fractionalMutations, preservesTextNode, label: label.textContent };
+    });
+    assert.equal(progressUpdates.repeatedMutations, 0, "repeating the same progress does not invalidate loading artwork");
+    assert.deepEqual(progressUpdates.fractionalMutations, ["path"], "a fractional progress change updates only the SVG fan");
+    assert.equal(progressUpdates.preservesTextNode, true, "percentage updates retain the original text node like the native binding");
+    assert.equal(progressUpdates.label, "26%");
+    report.checks.push("loading updates preserve text nodes and skip unchanged DOM values");
     const loadingOpacity = await page.evaluate(() => {
       ui.setLoading(100);
       return getComputedStyle(document.querySelector(".start-hint")).opacity;

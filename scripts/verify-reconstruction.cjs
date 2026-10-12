@@ -13,6 +13,9 @@ function dependency(name) {
 function getReconstructionUrl(environment = process.env) {
   return environment.RECONSTRUCTION_URL || environment.RECON_URL || 'http://127.0.0.1:4174';
 }
+function getViewportConfigs(environment = process.env) {
+  return JSON.parse(environment.RECON_VIEWPORTS || '[{"width":1200,"height":660,"dpr":1},{"width":1920,"height":1080,"dpr":2}]');
+}
 function getQuickCheckpoint(environment = process.env) {
   if (!environment.RECON_QUICK) return null;
   return environment.RECON_QUICK === 'three-stars' ? 'three-stars' : 'intro-2s';
@@ -186,6 +189,15 @@ async function ready(page, reconstructed = false) {
   await page.waitForTimeout(250);
 }
 
+async function waitForWheelResponse(page) {
+  // mouse.wheel acknowledges dispatch, not the page's 100ms debounce callback.
+  // Keep virtual time frozen until both real handlers begin their text dissolve.
+  await page.waitForFunction(() => {
+    const effect = window.__moonApp || window.Vue?.prototype.$effectVue;
+    return effect?.player?.scenes.scene_moon?.textState === 'animationOut';
+  }, undefined, { polling: 20, timeout: 10000 });
+}
+
 async function state(page) {
   return page.evaluate(() => {
     const app = window.__moonApp;
@@ -260,7 +272,7 @@ function compareImages(original, local, differencePath) {
   const quickThrough = getQuickCheckpoint();
   const report = { reconstructionUrl, quickThrough, mode: process.env.RECON_LOADING_CHECK ? 'loading-progress' : 'opening-and-first-page', reference: 'Untouched captured original HTML, JS, CSS, JSON, fonts and textures; original network URLs fulfilled from local HAR resources.', clock: 'Seeded random; Date.now, performance.now and RAF driven together at 60 Hz; 32 microtask flushes between frames; each CSS animation uses elapsed time since its own virtual birth; hooks only in verification.', scenarios: [] };
   try {
-    for (const config of JSON.parse(process.env.RECON_VIEWPORTS || '[{"width":1200,"height":660,"dpr":1}]')) {
+    for (const config of getViewportConfigs()) {
       const label = `${config.width}x${config.height}@${config.dpr}`;
       const contexts = await Promise.all([0, 1].map(() => browser.newContext({ viewport: { width: config.width, height: config.height }, deviceScaleFactor: config.dpr })));
       const pages = await Promise.all(contexts.map(context => context.newPage()));
@@ -330,10 +342,10 @@ function compareImages(original, local, differencePath) {
       await advance(90);
       await Promise.all(pages.map(page => page.mouse.move(config.width / 2, config.height / 2)));
       await Promise.all(pages.map(page => page.mouse.wheel(0, 600)));
-      await pages[0].waitForTimeout(100);
+      await Promise.all(pages.map(waitForWheelResponse));
       await advance(300); await capture('second-text');
       await Promise.all(pages.map(page => page.mouse.wheel(0, 600)));
-      await pages[0].waitForTimeout(100);
+      await Promise.all(pages.map(waitForWheelResponse));
       await advance(360); await capture('three-stars');
       if (quickThrough === 'three-stars') {
         scenario.referenceBackendRejections = await pages[0].evaluate(() => __captureBackendRejections);

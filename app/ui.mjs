@@ -348,12 +348,19 @@ export function createUI({
   function setLoading(value) {
     const rawProgress = Math.max(0, Math.min(100, value));
     progress = Math.floor(rawProgress);
-    loadingContainer.dataset.progress = String(progress);
-    progressText.textContent = word("loading_number", "{num}%").replace(
+    const displayedProgress = String(progress);
+    if (loadingContainer.dataset.progress !== displayedProgress)
+      loadingContainer.dataset.progress = displayedProgress;
+    const label = word("loading_number", "{num}%").replace(
       "{num}",
-      String(progress),
+      displayedProgress,
     );
-    fan.setAttribute("d", loadingSectorPath(rawProgress));
+    // The native binding retains its Text node and skips unchanged DOM values.
+    // Replacing it each frame needlessly invalidates the loading compositor layer.
+    if (progressText.firstChild.data !== label)
+      progressText.firstChild.data = label;
+    const path = loadingSectorPath(rawProgress);
+    if (fan.getAttribute("d") !== path) fan.setAttribute("d", path);
     if (progress === 100 && startHint.hidden) revealWithFade(startHint);
     else if (progress < 100) startHint.hidden = true;
   }
