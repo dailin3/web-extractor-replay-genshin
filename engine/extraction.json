@@ -1,0 +1,334 @@
+{
+  "source": "projects/ys.mihoyo.com/assets/vendors_3c19dbfdd57bec9e83ae.js",
+  "sha256": "6494c4d3f5583fd09cdc1354263cbf715e1d2cd8da6146e3a4341f2d67587060",
+  "thirdPartyModules": {
+    "three": 23402,
+    "gsap": 85880,
+    "customEase": 74638,
+    "browserDetector": 83761,
+    "howler": 51458,
+    "regenerator": 7452
+  },
+  "rendererModules": [
+    {
+      "id": 0,
+      "name": "three",
+      "external": true
+    },
+    {
+      "id": 1,
+      "name": "motion-utils",
+      "external": false
+    },
+    {
+      "id": 2,
+      "name": "tween-timeline",
+      "external": false
+    },
+    {
+      "id": 3,
+      "name": "step-block",
+      "external": false
+    },
+    {
+      "id": 4,
+      "name": "base-timeline",
+      "external": false
+    },
+    {
+      "id": 5,
+      "name": "step-frame",
+      "external": false
+    },
+    {
+      "id": 6,
+      "name": "gsap",
+      "external": true
+    },
+    {
+      "id": 7,
+      "name": "motion",
+      "external": false
+    },
+    {
+      "id": 8,
+      "name": "tween-block",
+      "external": false
+    },
+    {
+      "id": 9,
+      "name": "gradient",
+      "external": false
+    },
+    {
+      "id": 10,
+      "name": "hit-test",
+      "external": false
+    },
+    {
+      "id": 11,
+      "name": "spine-runtime",
+      "external": false
+    },
+    {
+      "id": 12,
+      "name": "msdf",
+      "external": false
+    },
+    {
+      "id": 13,
+      "name": "cue",
+      "external": false
+    },
+    {
+      "id": 14,
+      "name": "keyframe-block",
+      "external": false
+    },
+    {
+      "id": 15,
+      "name": "spine-block",
+      "external": false
+    },
+    {
+      "id": 16,
+      "name": "skin-block",
+      "external": false
+    },
+    {
+      "id": 17,
+      "name": "gradient-block",
+      "external": false
+    },
+    {
+      "id": 18,
+      "name": "decoder",
+      "external": false
+    },
+    {
+      "id": 19,
+      "name": "mouse",
+      "external": false
+    },
+    {
+      "id": 20,
+      "name": "browser",
+      "external": false
+    },
+    {
+      "id": 21,
+      "name": "mouse-proxy",
+      "external": false
+    },
+    {
+      "id": 22,
+      "name": "mouse-uniforms",
+      "external": false
+    },
+    {
+      "id": 23,
+      "name": "camera",
+      "external": false
+    },
+    {
+      "id": 24,
+      "name": "scene-data",
+      "external": false
+    },
+    {
+      "id": 25,
+      "name": "text-node-types",
+      "external": false
+    },
+    {
+      "id": 26,
+      "name": "canvas-style",
+      "external": false
+    },
+    {
+      "id": 27,
+      "name": "buffer-size",
+      "external": false
+    },
+    {
+      "id": 28,
+      "name": "engine-api",
+      "external": false
+    },
+    {
+      "id": 29,
+      "name": "custom-ease",
+      "external": true
+    },
+    {
+      "id": 30,
+      "name": "spine-utils",
+      "external": false
+    },
+    {
+      "id": 31,
+      "name": "group-timeline",
+      "external": false
+    },
+    {
+      "id": 32,
+      "name": "keyframe-timeline",
+      "external": false
+    },
+    {
+      "id": 33,
+      "name": "spine-timeline",
+      "external": false
+    },
+    {
+      "id": 34,
+      "name": "step-timeline",
+      "external": false
+    },
+    {
+      "id": 35,
+      "name": "skin-timeline",
+      "external": false
+    },
+    {
+      "id": 36,
+      "name": "texture-timeline",
+      "external": false
+    },
+    {
+      "id": 37,
+      "name": "movie-timeline",
+      "external": false
+    },
+    {
+      "id": 38,
+      "name": "gradient-timeline",
+      "external": false
+    },
+    {
+      "id": 39,
+      "name": "binary-types",
+      "external": false
+    },
+    {
+      "id": 40,
+      "name": "mouse-controller",
+      "external": false
+    },
+    {
+      "id": 41,
+      "name": "browser-detector",
+      "external": true
+    },
+    {
+      "id": 42,
+      "name": "utils",
+      "external": false
+    },
+    {
+      "id": 43,
+      "name": "tween-utils",
+      "external": false
+    },
+    {
+      "id": 44,
+      "name": "audio-manager",
+      "external": false
+    },
+    {
+      "id": 45,
+      "name": "howler",
+      "external": true
+    },
+    {
+      "id": 46,
+      "name": "rich-text",
+      "external": false
+    },
+    {
+      "id": 47,
+      "name": "text-parser",
+      "external": false
+    },
+    {
+      "id": 48,
+      "name": "html-entities",
+      "external": false
+    },
+    {
+      "id": 49,
+      "name": "style-parser",
+      "external": false
+    },
+    {
+      "id": 50,
+      "name": "style-values",
+      "external": false
+    },
+    {
+      "id": 51,
+      "name": "style-validation",
+      "external": false
+    },
+    {
+      "id": 52,
+      "name": "text-defaults",
+      "external": false
+    },
+    {
+      "id": 53,
+      "name": "text-layout",
+      "external": false
+    },
+    {
+      "id": 54,
+      "name": "text-measure",
+      "external": false
+    },
+    {
+      "id": 55,
+      "name": "text-draw",
+      "external": false
+    },
+    {
+      "id": 56,
+      "name": "three-player",
+      "external": false
+    },
+    {
+      "id": 57,
+      "name": "resource-loader",
+      "external": false
+    },
+    {
+      "id": 58,
+      "name": "load-request",
+      "external": false
+    },
+    {
+      "id": 59,
+      "name": "xhr",
+      "external": false
+    },
+    {
+      "id": 60,
+      "name": "render-passes",
+      "external": false
+    },
+    {
+      "id": 61,
+      "name": "blur-pass",
+      "external": false
+    },
+    {
+      "id": 62,
+      "name": "copy-pass",
+      "external": false
+    },
+    {
+      "id": 63,
+      "name": "source-loader",
+      "external": false
+    }
+  ]
+}

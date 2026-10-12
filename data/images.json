@@ -1,0 +1,943 @@
+{
+  "loadingManifest": [
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/loading_text.png",
+      "id": "loading_text",
+      "type": "image"
+    }
+  ],
+  "imageSetting": [
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/common_noise.5f71cde7..png",
+      "id": "common_noise",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/DEFAULT.8f5b72c9..png",
+      "id": "DEFAULT",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/icon_light_1.96644d17..png",
+      "id": "icon_light_1",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/icon_light_10.a8336fc1..png",
+      "id": "icon_light_10",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/icon_light_11.a3577add..png",
+      "id": "icon_light_11",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/icon_light_2.5de1d666..png",
+      "id": "icon_light_2",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/icon_light_2a.96644d17..png",
+      "id": "icon_light_2a",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/icon_light_3.902a037f..png",
+      "id": "icon_light_3",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/icon_light_4.259bbc8b..png",
+      "id": "icon_light_4",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/icon_light_5.788e19fc..png",
+      "id": "icon_light_5",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/icon_light_6.76fc7b82..png",
+      "id": "icon_light_6",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/icon_light_7.9119eb73..png",
+      "id": "icon_light_7",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/icon_light_8.ad5517f1..png",
+      "id": "icon_light_8",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/icon_light_9.f9d1469c..png",
+      "id": "icon_light_9",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/icon_star0.4fe80657..png",
+      "id": "icon_star0",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/icon_star1.4077107e..png",
+      "id": "icon_star1",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/index_an-16.png",
+      "id": "index_an",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/jueshe_lizi-17.png",
+      "id": "jueshe_lizi",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/kuang_diffuse_jpg.2ea86592..jpg",
+      "id": "kuang_diffuse_jpg",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/kuang_diffuse_png.ac8bc6b0..png",
+      "id": "kuang_diffuse_png",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/kuang_mask_png.aa31ea7f..png",
+      "id": "kuang_mask_png",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/cc621c90c7684c89aa0e5e120f93fda5_8232696065343461714.png",
+      "id": "map_text",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/mask_in.8b2e86a5..png",
+      "id": "mask_in",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/mask_loop.f895d5ae..png",
+      "id": "mask_loop",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/moon_a_faguan_a.a5fce30c..png",
+      "id": "moon_a_faguan_a",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/moon_a_faguan_b.f769db5b..png",
+      "id": "moon_a_faguan_b",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/moon_a_tex.589e0a28..png",
+      "id": "moon_a_tex",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/moon_a_yy_dup.be220346..png",
+      "id": "moon_a_yy_dup",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/moon_a_yy.932465f1..png",
+      "id": "moon_a_yy",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/moon_b_faguan_a-29.png",
+      "id": "moon_b_faguan_a",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/moon_b_faguan_b-30.png",
+      "id": "moon_b_faguan_b",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/moon_b_mask.318b153e..png",
+      "id": "moon_b_mask",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/moon_b_tex.a1fca764..png",
+      "id": "moon_b_tex",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/moon_b_yy.f651873d..png",
+      "id": "moon_b_yy",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/moon_c_faguan_a.db8ae3b8..png",
+      "id": "moon_c_faguan_a",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/moon_c_mask.1db82e3b..png",
+      "id": "moon_c_mask",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/moon_c_tex.35d9e9d2..png",
+      "id": "moon_c_tex",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/p2_faguan_dr-37.png",
+      "id": "p2_faguan_dr",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/p2_faguan_tl.d20241e7..png",
+      "id": "p2_faguan_tl",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/p2_img_a-39.png",
+      "id": "p2_img_a",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/p2_img_b-40.png",
+      "id": "p2_img_b",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/p2_line-41.png",
+      "id": "p2_line",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/p2_lizi-42.png",
+      "id": "p2_lizi",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/p2_lp_a.f61e309b..png",
+      "id": "p2_lp_a",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/p2_lp_b-44.png",
+      "id": "p2_lp_b",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/p2_lp_c-45.png",
+      "id": "p2_lp_c",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/p2_lp_e.9941065b..png",
+      "id": "p2_lp_e",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/p2_lp_top.5026f4f7..png",
+      "id": "p2_lp_top",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/p2_lp_xiaopan.85ef3265..png",
+      "id": "p2_lp_xiaopan",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/p2_phone_niequan_b.6b6da7ba..png",
+      "id": "p2_phone_niequan_b",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/p2_phone_quan_a.e3fe3012..png",
+      "id": "p2_phone_quan_a",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/p2_phone_top_icon-51.png",
+      "id": "p2_phone_top_icon",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/p2_phone_wenhap-52.png",
+      "id": "p2_phone_wenhap",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/p2_xingti-53.png",
+      "id": "p2_xingti",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/p3_kuang_in.a7dc43bf..png",
+      "id": "p3_kuang_in",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/p3_kuang_loop.0fb7b59f..png",
+      "id": "p3_kuang_loop",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/p3_leiwen_blue-56.png",
+      "id": "p3_leiwen_blue",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/p3_leiwen_red.3249c7c7..png",
+      "id": "p3_leiwen_red",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/p3_mask_in.3a342785..png",
+      "id": "p3_mask_in",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/p3_mask_kuan_fg.41fc7e64..png",
+      "id": "p3_mask_kuan_fg",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/p3_mask_kuang.b92c9738..png",
+      "id": "p3_mask_kuang",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/p3_mask_sp.612b590f..png",
+      "id": "p3_mask_sp",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/p3_mask-62.png",
+      "id": "p3_mask",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/p3_moon_sp_a-63.png",
+      "id": "p3_moon_sp_a",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/p3_moon_sp_b-64.png",
+      "id": "p3_moon_sp_b",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/p3_moon_sp_c-65.png",
+      "id": "p3_moon_sp_c",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/p3_moon_sp_d-66.png",
+      "id": "p3_moon_sp_d",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/p3_moon_sp_e-67.png",
+      "id": "p3_moon_sp_e",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/p3_moon_sp_f-68.png",
+      "id": "p3_moon_sp_f",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/p3_moon_sp_g-69.png",
+      "id": "p3_moon_sp_g",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/p3_moon_sp_h-70.png",
+      "id": "p3_moon_sp_h",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/p3_moon_sp_i-71.png",
+      "id": "p3_moon_sp_i",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/p3_moon_sp_j-72.png",
+      "id": "p3_moon_sp_j",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/p3_moon_sp_k-73.png",
+      "id": "p3_moon_sp_k",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/p3_moon_sp_l-74.png",
+      "id": "p3_moon_sp_l",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/p3_moon_sp_n-75.png",
+      "id": "p3_moon_sp_n",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/p3_moon_sp.142bc320..png",
+      "id": "p3_moon_sp",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/p3_moon.f9c548ee..png",
+      "id": "p3_moon",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/p3_sky-78.png",
+      "id": "p3_sky",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/p3_xyun_a.e6b0e792..png",
+      "id": "p3_xyun_a",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/p3_xyun_b.325d9197..png",
+      "id": "p3_xyun_b",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/p3_xyun_c.cf86c775..png",
+      "id": "p3_xyun_c",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/p3_xyun_d.19f80647..png",
+      "id": "p3_xyun_d",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/p3_xyun_e.3788ae30..png",
+      "id": "p3_xyun_e",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/p3_xyun_f.b1f3dfa1..png",
+      "id": "p3_xyun_f",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/pII_other-85.png",
+      "id": "pII_other",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/pii_p2_weiquan50-86.png",
+      "id": "pii_p2_weiquan50",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/PII_st_a-87.png",
+      "id": "PII_st_a",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/PII_st_an_a-88.png",
+      "id": "PII_st_an_a",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/PII_st_an_b-89.png",
+      "id": "PII_st_an_b",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/PII_st_an_c-90.png",
+      "id": "PII_st_an_c",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/PII_st_an_d-91.png",
+      "id": "PII_st_an_d",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/PII_st_an_e-92.png",
+      "id": "PII_st_an_e",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/PII_st_an_f-93.png",
+      "id": "PII_st_an_f",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/PII_st_an_g-94.png",
+      "id": "PII_st_an_g",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/PII_st_an_h-95.png",
+      "id": "PII_st_an_h",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/PII_st_b-96.png",
+      "id": "PII_st_b",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/PII_st_c-97.png",
+      "id": "PII_st_c",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/PII_st_d-98.png",
+      "id": "PII_st_d",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/PII_st_e-99.png",
+      "id": "PII_st_e",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/PII_st_f-100.png",
+      "id": "PII_st_f",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/PII_st_f-100.png",
+      "id": "PII_st_g",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/PII_st_h-102.png",
+      "id": "PII_st_h",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/PII_st_i-103.png",
+      "id": "PII_st_i",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/PII_st_j-104.png",
+      "id": "PII_st_j",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/PII_st_k-105.png",
+      "id": "PII_st_k",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/PII_st_l-106.png",
+      "id": "PII_st_l",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/PII_st_m-107.png",
+      "id": "PII_st_m",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/PII_st_n-108.png",
+      "id": "PII_st_n",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/PII_st_o-109.png",
+      "id": "PII_st_o",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/PII_st_p-110.png",
+      "id": "PII_st_p",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/PII_st_q-111.png",
+      "id": "PII_st_q",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/PII_st_r-112.png",
+      "id": "PII_st_r",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/PII_st_s-113.png",
+      "id": "PII_st_s",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/PII_st_t-114.png",
+      "id": "PII_st_t",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/PII_st_u.b7d34b06..png",
+      "id": "PII_st_u",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/PII_st_v-116.png",
+      "id": "PII_st_v",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/PII_st_w-117.png",
+      "id": "PII_st_w",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/pII_xingyun_a.b15b4022..png",
+      "id": "pII_xingyun_a",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/pII_xingyun_b.3757a04b..png",
+      "id": "pII_xingyun_b",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/point_tint.52362955..png",
+      "id": "point_tint",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/sky-121.jpg",
+      "id": "sky",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/sl_logo_1.a6fc42e9..png",
+      "id": "sl_logo_1",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/sl_logo_10.439d91d1..png",
+      "id": "sl_logo_10",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/sl_logo_11.1207738c..png",
+      "id": "sl_logo_11",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/sl_logo_2.957b98bc..png",
+      "id": "sl_logo_2",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/sl_logo_3.ce740300..png",
+      "id": "sl_logo_3",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/sl_logo_4.cd171f5f..png",
+      "id": "sl_logo_4",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/sl_logo_5.3e649dda..png",
+      "id": "sl_logo_5",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/sl_logo_6.a61612d0..png",
+      "id": "sl_logo_6",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/sl_logo_7.a3d3540c..png",
+      "id": "sl_logo_7",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/sl_logo_8.1bd53ae0..png",
+      "id": "sl_logo_8",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/sl_logo_9.a4f6e8ef..png",
+      "id": "sl_logo_9",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/start_color_1-133.png",
+      "id": "start_color_1",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/start_color_3-134.png",
+      "id": "start_color_3",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/start_color_4-135.png",
+      "id": "start_color_4",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/story_arrow-136.png",
+      "id": "story_arrow",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/streamer.37650afd..png",
+      "id": "streamer",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/touch_tint.51356395..png",
+      "id": "touch_tint",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/touch-139.png",
+      "id": "touch",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/transparent-140.png",
+      "id": "transparent",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/video_mask_1-141.png",
+      "id": "video_mask_1",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/video_mask_2-142.png",
+      "id": "video_mask_2",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/xingyun_a.42a8feee..png",
+      "id": "xingyun_a",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/xingyun_b.40743ace..png",
+      "id": "xingyun_b",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/xingyun_c.b8c6a465..png",
+      "id": "xingyun_c",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/xingyun_d.9356cf48..png",
+      "id": "xingyun_d",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/xingyun_e.10ac4abd..png",
+      "id": "xingyun_e",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/xingyun_f.3e89c403..png",
+      "id": "xingyun_f",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/xingyun_g.3cdce969..png",
+      "id": "xingyun_g",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/xx_bai-150.png",
+      "id": "xx_bai",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/xx_lizi-151.png",
+      "id": "xx_lizi",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/yinhe_a.b8e5eb55..png",
+      "id": "yinhe_a",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/yinhe_b.af69c465..png",
+      "id": "yinhe_b",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/yinhe_c.182a17be..png",
+      "id": "yinhe_c",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/yinhe_d.22902303..png",
+      "id": "yinhe_d",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/zx_d-156.png",
+      "id": "zx_d",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/zx_e-157.png",
+      "id": "zx_e",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/zx_f-158.png",
+      "id": "zx_f",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/click_xx-159.png",
+      "id": "click_xx",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/p2_lp_d_2.0ce5cc81..png",
+      "id": "p2_lp_d_2",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/p2_lp_d.2ab2ced4..png",
+      "id": "p2_lp_d",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/p2_menu.e0cc0ef8..png",
+      "id": "p2_menu",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/p2_phone_zz-163.png",
+      "id": "p2_phone_zz",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/p3_mask_kuan_fg.a5d990ef..png",
+      "id": "p3_mask_kuan_fg",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/p3_mask_sp.b791fc31..png",
+      "id": "p3_mask_sp",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/sl_bulingbuling-166.png",
+      "id": "sl_bulingbuling",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/story_a.a43d18ae..png",
+      "id": "story_a",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/story_b.1d44ace3..png",
+      "id": "story_b",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/story_c-169.png",
+      "id": "story_c",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/story_d-170.png",
+      "id": "story_d",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/video_mask-171.png",
+      "id": "video_mask",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/local-assets/xingguai.f96ccb96..png",
+      "id": "xingguai",
+      "type": "image"
+    },
+    {
+      "src": "/web-extractor-replay-genshin/data/textures/xx-173.png",
+      "id": "xx",
+      "type": "image"
+    }
+  ],
+  "textureSettings": {
+    "moon_b_tex": {
+      "config": {
+        "wrapS": 1000,
+        "wrapT": 1000
+      }
+    },
+    "index_an": {
+      "config": {
+        "wrapS": 1000,
+        "wrapT": 1000
+      }
+    },
+    "p2_line": {
+      "config": {
+        "wrapS": 1000,
+        "wrapT": 1000
+      }
+    },
+    "moon_a_tex": {
+      "config": {
+        "wrapS": 1000,
+        "wrapT": 1000
+      }
+    },
+    "streamer": {
+      "config": {
+        "wrapS": 1000,
+        "wrapT": 1000
+      }
+    },
+    "common_noise": {
+      "config": {
+        "wrapS": 1000,
+        "wrapT": 1000
+      }
+    },
+    "icon_star0": {
+      "config": {
+        "wrapS": 1000,
+        "wrapT": 1000
+      }
+    },
+    "icon_star1": {
+      "config": {
+        "wrapS": 1000,
+        "wrapT": 1000
+      }
+    },
+    "moon_c_tex": {
+      "config": {
+        "wrapS": 1000,
+        "wrapT": 1000
+      }
+    }
+  },
+  "localeTextureKeys": {
+    "wheel_hint": "e_wheel_hint",
+    "login": "e_login",
+    "login_hover": "e_login_hover",
+    "map_text": "e_map_text"
+  }
+}

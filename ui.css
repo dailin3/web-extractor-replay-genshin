@@ -1,0 +1,587 @@
+/* The composition scales from the original 2500 × 1080 artwork by viewport height. */
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+html {
+  font-size: 100px;
+}
+body {
+  position: relative;
+  color: #333;
+  font-size: 0.14rem;
+  line-height: 1.15;
+  font-family:
+    fontLink, "Helvetica neue", "PingFang SC", "Hiragino Sans GB",
+    "Microsoft YaHei UI", "Microsoft YaHei", Arial, sans-serif;
+  background: url("/web-extractor-replay-genshin/ui-assets/loading-pattern.png") repeat center;
+  background-size: 0.1rem 0.1rem;
+  -webkit-tap-highlight-color: transparent;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+*:not(input):not(textarea) {
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+button {
+  font: inherit;
+  color: inherit;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+img {
+  -webkit-user-drag: none;
+}
+[hidden] {
+  display: none !important;
+}
+#canvas-bg,
+#webglCanvas {
+  position: absolute;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+}
+#page-ui {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  pointer-events: none;
+}
+.ui-frame {
+  position: absolute;
+  top: 0;
+  left: var(--frame-left, calc(50% - 12.5rem));
+  width: var(--frame-width, 25rem);
+  height: 0;
+}
+.top-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.top-nav {
+  position: absolute;
+  left: 3.48rem;
+  top: 0.43rem;
+  width: 18.03rem;
+  height: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.top-left {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.top-right {
+  display: flex;
+  align-items: center;
+}
+.icon {
+  position: relative;
+  width: 0.6rem;
+  height: 0.6rem;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  pointer-events: auto;
+}
+.nav-spacer {
+  pointer-events: none;
+}
+.rules-button {
+  background-image: url("/web-extractor-replay-genshin/ui-assets/rules.png");
+}
+.rules-button:hover {
+  background-image: url("/web-extractor-replay-genshin/ui-assets/rules-hover.png");
+}
+.share-button {
+  background-image: url("/web-extractor-replay-genshin/ui-assets/share.png");
+}
+.share-button:hover {
+  background-image: url("/web-extractor-replay-genshin/ui-assets/share-hover.png");
+}
+.audio-button img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+.audio-hover {
+  display: none;
+}
+.audio-button:hover .audio-normal {
+  display: none;
+}
+.audio-button:hover .audio-hover {
+  display: block;
+}
+.login-button {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 0.6rem;
+  margin-left: 0.1rem;
+  color: #fff;
+  font-size: 0.18rem;
+  text-align: center;
+  white-space: nowrap;
+  pointer-events: auto;
+}
+.login-button > span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin-left: -0.01rem;
+  margin-right: -0.01rem;
+  padding: 0 0.1rem;
+  background: url("/web-extractor-replay-genshin/ui-assets/login-center.png") repeat-x center;
+  background-size: auto 60%;
+}
+.login-button::before,
+.login-button::after {
+  content: "";
+  height: 100%;
+  flex: none;
+  width: 0.25rem;
+  background: url("/web-extractor-replay-genshin/ui-assets/login-left.png") no-repeat right center;
+  background-size: 100% 60%;
+}
+.login-button::after {
+  background-position: left center;
+  background-image: url("/web-extractor-replay-genshin/ui-assets/login-right.png");
+}
+.login-button:hover {
+  color: #000;
+}
+.login-button:hover > span {
+  background-image: url("/web-extractor-replay-genshin/ui-assets/login-center-hover.png");
+}
+.login-button:hover::before {
+  background-image: url("/web-extractor-replay-genshin/ui-assets/login-left-hover.png");
+}
+.login-button:hover::after {
+  background-image: url("/web-extractor-replay-genshin/ui-assets/login-right-hover.png");
+}
+.effect-hot-spot {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: var(--frame-width, 25rem);
+  height: 0;
+  transform: translateX(-50%);
+  z-index: 20;
+}
+.wheel-hint {
+  position: absolute;
+  right: 16.5%;
+  top: 9.8rem;
+  width: 0.36rem;
+  height: 0.29rem;
+  margin-left: -0.18rem;
+  color: silver;
+  font-size: 0.16rem;
+}
+.default-font {
+  font-family: "Microsoft YaHei", "微软雅黑", Arial, sans-serif !important;
+}
+.wheel-hint::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: url("/web-extractor-replay-genshin/ui-assets/wheel.png") no-repeat center;
+  background-size: contain;
+  animation: wheelLoop 1.5s infinite ease-in-out;
+  transform: translateY(-50%);
+}
+.wheel-hint .text {
+  opacity: 0.6;
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  margin-top: 0.15rem;
+  height: 0.2rem;
+  white-space: nowrap;
+  transform: translateX(-50%);
+}
+.nav-hint {
+  position: absolute;
+  left: 50%;
+  top: 10.6rem;
+  transform: translate(-50%, -100%);
+  width: 2.59rem;
+  height: 0.23rem;
+  background: url("/web-extractor-replay-genshin/ui-assets/nav-background.png") no-repeat center;
+  background-size: contain;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-left: 0.2rem;
+  padding-right: 0.2rem;
+  pointer-events: none;
+}
+.nav-hint .item {
+  width: 0.15rem;
+  height: 0.15rem;
+  background: url("/web-extractor-replay-genshin/ui-assets/nav-star.png") no-repeat center;
+  background-size: contain;
+}
+.nav-hint .item.select {
+  background-image: url("/web-extractor-replay-genshin/ui-assets/nav-moon.png");
+}
+#css3d-renderer {
+  z-index: 10;
+}
+.moon-star {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1rem;
+  height: 1rem;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+.moon-star-3 {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+.moon-star.show-hint .hint {
+  position: absolute;
+  top: 90%;
+  left: 90%;
+  width: 0.4rem;
+  height: 0.53rem;
+  background: url("/web-extractor-replay-genshin/ui-assets/guide-hand.png") no-repeat center;
+  background-size: contain;
+  pointer-events: none;
+  animation: handAni 5s infinite ease-in-out;
+}
+.moon-star-3.show-hint .hint {
+  top: 80%;
+  left: 80%;
+}
+.loading {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: url("/web-extractor-replay-genshin/ui-assets/loading-pattern.png") repeat center;
+  background-size: 0.1rem 0.1rem;
+  pointer-events: auto;
+}
+.loading-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2.9rem;
+  height: 2.9rem;
+  transform: translate(-50%, -50%);
+  animation: loading_show 1s;
+}
+.loading-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.2;
+  background: url("/web-extractor-replay-genshin/ui-assets/loading-icon.png") no-repeat center;
+  background-size: contain;
+}
+.loading-container[data-progress="99"]::before,
+.loading-container[data-progress="100"]::before {
+  opacity: 1;
+}
+.loading-container[data-progress="99"] svg,
+.loading-container[data-progress="100"] svg {
+  display: none;
+}
+.loading-container svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.loading-progress {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  margin-top: 0.35rem;
+  font-size: 0.16rem;
+}
+.start-hint {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #d6d6d6;
+  font-size: 0.18rem;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.start-hint::before,
+.start-hint::after {
+  content: "";
+  width: 1.55rem;
+  height: 0.24rem;
+  background: url("/web-extractor-replay-genshin/ui-assets/start-ornament.png") no-repeat center;
+  background-size: 100% 100%;
+}
+.start-hint::after {
+  transform: scaleX(-1);
+}
+.start-hint span {
+  margin-left: 0.1rem;
+  margin-right: 0.1rem;
+}
+.start-hint::before,
+.start-hint::after,
+.start-hint span {
+  animation: loading_start_hint 1.5s infinite ease-in-out;
+}
+@keyframes loading_start_hint {
+  50% {
+    opacity: 0.5;
+  }
+}
+@keyframes loading_show {
+  0% {
+    opacity: 0;
+  }
+}
+@keyframes wheelLoop {
+  50% {
+    transform: translateY(0);
+  }
+}
+@keyframes handAni {
+  12.5%,
+  37.5% {
+    opacity: 1;
+    transform: translate(-0.2rem, -0.2rem);
+  }
+  25% {
+    transform: translate(0, 0);
+  }
+  0%,
+  50%,
+  100% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+}
+/* Preserve the original compositor layers, including its constant-opacity animation. */
+.ui-frame,
+.effect-hot-spot,
+.nav-hint {
+  animation: opacity-loop-ani 1s infinite;
+}
+@keyframes opacity-loop-ani {
+  50% {
+    opacity: 1;
+  }
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+  pointer-events: none;
+}
+.rules-mask {
+  position: absolute;
+  inset: 0;
+  z-index: 900;
+  /* Keep the translucent popup and its shadow in one compositor group. */
+  isolation: isolate;
+  background: rgba(0, 0, 0, 0.8);
+  pointer-events: auto;
+  animation: opacity-loop-ani 1s infinite;
+}
+.rules-mask[data-motion="enter"] {
+  animation-duration: 0.25s;
+  transition: background-color 0.25s cubic-bezier(0.15, 0.59, 0.45, 0.89);
+}
+.rules-mask[data-motion="enter"] > .popup-container {
+  transition: opacity 0.25s cubic-bezier(0.15, 0.59, 0.45, 0.89);
+}
+.rules-mask[data-motion="exit"] {
+  animation-duration: 0.18s;
+  transition: background-color 0.18s ease-out;
+}
+.rules-mask[data-motion="exit"] > .popup-container {
+  transition: opacity 0.18s ease-out;
+}
+.rules-mask[data-motion] > .popup-container {
+  pointer-events: none;
+}
+.rules-mask.rules-transparent {
+  background-color: transparent;
+}
+.rules-transparent > .popup-container {
+  opacity: 0;
+}
+.popup-container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0;
+  height: 0;
+}
+.popup-body {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 0.1rem;
+  width: 6.47rem;
+  min-height: 2.88rem;
+  border: 0.16rem solid transparent;
+  border-image: url("/web-extractor-replay-genshin/ui-assets/popup-border.png") 25% fill;
+  border-image-width: 0.4rem;
+  padding: 0.65rem 0.25rem 0.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 0 0.08rem hsla(0, 0%, 100%, 0.5);
+  background: #080808 url("/web-extractor-replay-genshin/ui-assets/popup-background.png") no-repeat top
+    center;
+  background-clip: padding-box;
+  background-size: 100% auto;
+}
+.popup-body > * {
+  margin-bottom: 0.2rem;
+}
+.popup-body :last-child {
+  margin-bottom: 0;
+}
+.popup-body .popup-close {
+  position: absolute;
+  top: 0.1rem;
+  right: 0.1rem;
+  width: 0.45rem;
+  height: 0.45rem;
+  margin: 0;
+  background: url("/web-extractor-replay-genshin/ui-assets/popup-close.png") no-repeat center;
+  background-size: 150% 150%;
+  opacity: 0.75;
+}
+.popup-body .popup-close:hover {
+  background-image: url("/web-extractor-replay-genshin/ui-assets/popup-close-hover.png");
+}
+.popup-close:focus-visible {
+  outline: 1px solid #d8d8d8;
+  outline-offset: 2px;
+}
+.popup-body .popup-title {
+  position: relative;
+  margin-top: -0.24rem;
+  color: #d8d8d8;
+  font-size: 0.24rem;
+  line-height: 1.2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.popup-title > span {
+  flex: none;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.1rem;
+}
+.popup-title > span::before,
+.popup-title > span::after {
+  flex: none;
+  content: "";
+  width: 1.06rem;
+  height: 0.14rem;
+  background: url("/web-extractor-replay-genshin/ui-assets/popup-title.png") no-repeat center;
+  background-size: contain;
+}
+.popup-title > span::after {
+  transform: scaleX(-1);
+}
+.popup-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.popup-content > * {
+  margin-bottom: 0.2rem;
+}
+.popup-content :last-child {
+  margin-bottom: 0;
+}
+.popup-rule .scrollContainer {
+  width: 100%;
+  height: 2.45rem;
+  font-size: 0.16rem;
+  line-height: 1.5;
+  color: #9a9a9a;
+  text-align: left;
+  overscroll-behavior: contain;
+}
+.rules-scroll-viewport {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+}
+.rules-scroll-panel {
+  position: relative;
+  box-sizing: border-box;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  z-index: 1;
+}
+.rules-scroll-panel::-webkit-scrollbar {
+  display: none;
+}
+.rules-scroll-view {
+  position: relative;
+  box-sizing: border-box;
+  min-width: 100%;
+  min-height: 100%;
+  width: -webkit-fit-content;
+}
+.popup-rule .scrollContent {
+  width: calc(100% - 0.25rem);
+}
+.scrollContent p {
+  margin: 0;
+}

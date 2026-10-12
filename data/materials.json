@@ -1,0 +1,1301 @@
+{
+  "points_text": {
+    "vertexShader": "/web-extractor-replay-genshin/data/shaders/points-text.vert.glsl",
+    "fragmentShader": "/web-extractor-replay-genshin/data/shaders/points-text.frag.glsl",
+    "transparent": true,
+    "depthTest": false,
+    "depthWrite": false,
+    "side": 0,
+    "blending": 1,
+    "lights": false,
+    "wireframe": false,
+    "extensions": {
+      "derivatives": false
+    },
+    "uniforms": {
+      "progress": {
+        "value": 0
+      },
+      "pointInfo": {
+        "value": {
+          "$type": "Vector2",
+          "args": [
+            2,
+            2
+          ]
+        }
+      },
+      "scale": {
+        "value": {
+          "$type": "Vector3",
+          "args": [
+            1,
+            1,
+            100
+          ]
+        }
+      }
+    },
+    "defines": {}
+  },
+  "BASIC": {
+    "vertexShader": "/web-extractor-replay-genshin/data/shaders/basic.vert.glsl",
+    "fragmentShader": "/web-extractor-replay-genshin/data/shaders/basic.frag.glsl",
+    "transparent": true,
+    "depthTest": true,
+    "depthWrite": true,
+    "side": 0,
+    "blending": 1,
+    "lights": false,
+    "wireframe": false,
+    "extensions": {
+      "derivatives": false
+    },
+    "uniforms": {
+      "opacity": {
+        "value": 1
+      },
+      "color": {
+        "value": {
+          "$type": "Color",
+          "args": [
+            16712000
+          ]
+        }
+      },
+      "blendColor": {
+        "value": {
+          "$type": "Color",
+          "args": [
+            0
+          ]
+        }
+      },
+      "blendIntensity": {
+        "value": 0
+      },
+      "gradient": {
+        "value": {
+          "$type": "Vector3",
+          "args": [
+            0,
+            100,
+            0
+          ]
+        }
+      },
+      "tintScale": {
+        "value": {
+          "$type": "Vector2",
+          "args": [
+            1,
+            1
+          ]
+        }
+      },
+      "tintOffset": {
+        "value": {
+          "$type": "Vector2",
+          "args": [
+            1,
+            1
+          ]
+        }
+      }
+    },
+    "defines": {
+      "USE_TEXTURE": 1,
+      "ALPHA_TEST": 0,
+      "BLEND_MODE": 0,
+      "USE_GRADIENT": 0,
+      "USE_TINT": 0
+    }
+  },
+  "SPINE": {
+    "vertexShader": "/web-extractor-replay-genshin/data/shaders/spine.vert.glsl",
+    "fragmentShader": "/web-extractor-replay-genshin/data/shaders/spine.frag.glsl",
+    "transparent": true,
+    "depthTest": false,
+    "depthWrite": false,
+    "side": 2,
+    "blending": 1,
+    "lights": false,
+    "wireframe": false,
+    "extensions": {
+      "derivatives": false
+    },
+    "uniforms": {
+      "opacity": {
+        "value": 1
+      },
+      "blendColor": {
+        "value": {
+          "$type": "Color",
+          "args": [
+            0
+          ]
+        }
+      },
+      "blendIntensity": {
+        "value": 0
+      },
+      "gradient": {
+        "value": {
+          "$type": "Vector3",
+          "args": [
+            0,
+            100,
+            0
+          ]
+        }
+      },
+      "tintScale": {
+        "value": {
+          "$type": "Vector2",
+          "args": [
+            2,
+            1
+          ]
+        }
+      },
+      "tintOffset": {
+        "value": {
+          "$type": "Vector2",
+          "args": [
+            1,
+            1
+          ]
+        }
+      }
+    },
+    "defines": {
+      "ALPHA_TEST": 0,
+      "BLEND_MODE": 0,
+      "USE_GRADIENT": 0,
+      "USE_TINT": 0
+    }
+  },
+  "MASK_CONTAINER": {
+    "vertexShader": "/web-extractor-replay-genshin/data/shaders/mask-container.vert.glsl",
+    "fragmentShader": "/web-extractor-replay-genshin/data/shaders/mask-container.frag.glsl",
+    "transparent": true,
+    "depthTest": false,
+    "depthWrite": false,
+    "side": 0,
+    "blending": 1,
+    "lights": false,
+    "wireframe": false,
+    "extensions": {
+      "derivatives": false
+    },
+    "uniforms": {
+      "maskAngle": {
+        "value": 0
+      },
+      "maskOffset": {
+        "value": {
+          "$type": "Vector2",
+          "args": [
+            0,
+            0
+          ]
+        }
+      },
+      "opacity": {
+        "value": 1
+      },
+      "maskCurve": {
+        "value": {
+          "$type": "Vector2",
+          "args": [
+            0,
+            1
+          ]
+        }
+      },
+      "feather": {
+        "value": {
+          "$type": "Vector2",
+          "args": [
+            0,
+            1
+          ]
+        }
+      }
+    },
+    "defines": {
+      "MASK_CHANNEL": 0,
+      "USE_MASK": 0,
+      "INVERSE_MASK": 0
+    }
+  },
+  "CACHE_DISPLAY": {
+    "vertexShader": "/web-extractor-replay-genshin/data/shaders/cache-display.vert.glsl",
+    "fragmentShader": "/web-extractor-replay-genshin/data/shaders/cache-display.frag.glsl",
+    "transparent": true,
+    "depthTest": false,
+    "depthWrite": false,
+    "side": 0,
+    "blending": 1,
+    "lights": false,
+    "wireframe": false,
+    "extensions": {
+      "derivatives": false
+    },
+    "uniforms": {
+      "opacity": {
+        "value": 1
+      },
+      "shadowColor": {
+        "value": {
+          "$type": "Color",
+          "args": [
+            0
+          ]
+        }
+      },
+      "shadowOpacity": {
+        "value": 1
+      },
+      "blur": {
+        "value": {
+          "$type": "Vector2",
+          "args": [
+            0,
+            0
+          ]
+        }
+      },
+      "strokeColor": {
+        "value": {
+          "$type": "Color",
+          "args": [
+            0
+          ]
+        }
+      },
+      "strokeWidth": {
+        "value": 1
+      },
+      "shadowBlur": {
+        "value": {
+          "$type": "Vector2",
+          "args": [
+            2,
+            2
+          ]
+        }
+      },
+      "shadowOffset": {
+        "value": {
+          "$type": "Vector2",
+          "args": [
+            0,
+            0
+          ]
+        }
+      },
+      "maskAngle": {
+        "value": 0
+      },
+      "maskOffset": {
+        "value": {
+          "$type": "Vector2",
+          "args": [
+            0,
+            0
+          ]
+        }
+      },
+      "colorCSB": {
+        "value": {
+          "$type": "Vector3",
+          "args": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "feather": {
+        "value": {
+          "$type": "Vector2",
+          "args": [
+            0,
+            1
+          ]
+        }
+      },
+      "blendColor": {
+        "value": {
+          "$type": "Color",
+          "args": [
+            0
+          ]
+        }
+      },
+      "blendIntensity": {
+        "value": 0
+      },
+      "maskCurve": {
+        "value": {
+          "$type": "Vector3",
+          "args": [
+            0,
+            1,
+            1
+          ]
+        }
+      },
+      "backColor": {
+        "value": {
+          "$type": "Color",
+          "args": [
+            0
+          ]
+        }
+      },
+      "maskSize": {
+        "value": {
+          "$type": "Vector2",
+          "args": [
+            2048,
+            2048
+          ]
+        }
+      },
+      "maskPadding": {
+        "value": 0
+      },
+      "outlineColor": {
+        "value": {
+          "$type": "Color",
+          "args": [
+            0
+          ]
+        }
+      },
+      "outlineIntensity": {
+        "value": {
+          "$type": "Vector2",
+          "args": [
+            0,
+            0
+          ]
+        }
+      }
+    },
+    "defines": {
+      "USE_BLUR": 0,
+      "USE_SHADOW": 0,
+      "USE_STROKE": 0,
+      "USE_SPRITE": 0,
+      "USE_MASK": 0,
+      "MASK_CHANNEL": 0,
+      "COLOR_ADJUST": 0,
+      "BLEND_MODE": 0,
+      "ALPHA_TEST": 0,
+      "CUSTOM_BACK_SIDE": 0,
+      "USE_MASK_OUTLINE": 0
+    }
+  },
+  "tex_move": {
+    "vertexShader": "/web-extractor-replay-genshin/data/shaders/tex-move.vert.glsl",
+    "fragmentShader": "/web-extractor-replay-genshin/data/shaders/tex-move.frag.glsl",
+    "transparent": true,
+    "depthTest": false,
+    "depthWrite": false,
+    "side": 0,
+    "blending": 1,
+    "lights": false,
+    "wireframe": false,
+    "extensions": {
+      "derivatives": false
+    },
+    "uniforms": {
+      "opacity": {
+        "value": 1
+      },
+      "speed": {
+        "value": 0.02
+      },
+      "xy_speed": {
+        "value": {
+          "$type": "Vector2",
+          "args": [
+            1,
+            0
+          ]
+        }
+      },
+      "lightDir": {
+        "value": {
+          "$type": "Vector3",
+          "args": [
+            -3,
+            0,
+            1
+          ]
+        }
+      },
+      "lightPower": {
+        "value": {
+          "$type": "Vector2",
+          "args": [
+            0.4,
+            0.3
+          ]
+        }
+      },
+      "lightColor": {
+        "value": {
+          "$type": "Vector3",
+          "args": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "lightFallOff": {
+        "value": {
+          "$type": "GradientTexture",
+          "config": {
+            "color": [
+              {
+                "value": 16777215,
+                "percent": 0
+              },
+              {
+                "value": 0,
+                "percent": 100
+              }
+            ],
+            "alpha": [
+              {
+                "value": 100,
+                "percent": 0
+              }
+            ]
+          }
+        }
+      }
+    },
+    "defines": {}
+  },
+  "tex_Double": {
+    "vertexShader": "/web-extractor-replay-genshin/data/shaders/tex-double.vert.glsl",
+    "fragmentShader": "/web-extractor-replay-genshin/data/shaders/tex-double.frag.glsl",
+    "transparent": true,
+    "depthTest": true,
+    "depthWrite": true,
+    "side": 2,
+    "blending": 1,
+    "lights": false,
+    "wireframe": false,
+    "extensions": {
+      "derivatives": false
+    },
+    "uniforms": {
+      "opacity": {
+        "value": 1
+      },
+      "percent": {
+        "value": 0.5
+      },
+      "color": {
+        "value": {
+          "$type": "Vector3",
+          "args": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "color_percent": {
+        "value": 0
+      }
+    },
+    "defines": {}
+  },
+  "BEZIER_PARTICLE": {
+    "vertexShader": "/web-extractor-replay-genshin/data/shaders/bezier-particle.vert.glsl",
+    "fragmentShader": "/web-extractor-replay-genshin/data/shaders/bezier-particle.frag.glsl",
+    "transparent": true,
+    "depthTest": true,
+    "depthWrite": false,
+    "side": 2,
+    "blending": 1,
+    "lights": false,
+    "wireframe": false,
+    "extensions": {
+      "derivatives": false
+    },
+    "uniforms": {
+      "opacity": {
+        "value": 1
+      },
+      "lifeCurve": {
+        "value": 1
+      },
+      "size": {
+        "value": {
+          "$type": "Vector2",
+          "args": [
+            20,
+            30
+          ]
+        }
+      },
+      "speed": {
+        "value": {
+          "$type": "Vector2",
+          "args": [
+            0.5,
+            1
+          ]
+        }
+      },
+      "alpha": {
+        "value": {
+          "$type": "Vector2",
+          "args": [
+            0.5,
+            1
+          ]
+        }
+      },
+      "startMin": {
+        "value": {
+          "$type": "Vector3",
+          "args": [
+            -500,
+            -500,
+            -500
+          ]
+        }
+      },
+      "startMax": {
+        "value": {
+          "$type": "Vector3",
+          "args": [
+            500,
+            500,
+            500
+          ]
+        }
+      },
+      "ctrMin": {
+        "value": {
+          "$type": "Vector3",
+          "args": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "ctrMax": {
+        "value": {
+          "$type": "Vector3",
+          "args": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "endMin": {
+        "value": {
+          "$type": "Vector3",
+          "args": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "endMax": {
+        "value": {
+          "$type": "Vector3",
+          "args": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "freqMin": {
+        "value": {
+          "$type": "Vector3",
+          "args": [
+            1,
+            1,
+            1
+          ]
+        }
+      },
+      "freqMax": {
+        "value": {
+          "$type": "Vector3",
+          "args": [
+            1,
+            1,
+            1
+          ]
+        }
+      },
+      "ampMin": {
+        "value": {
+          "$type": "Vector3",
+          "args": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "ampMax": {
+        "value": {
+          "$type": "Vector3",
+          "args": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "delayMin": {
+        "value": {
+          "$type": "Vector3",
+          "args": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "delayMax": {
+        "value": {
+          "$type": "Vector3",
+          "args": [
+            6.28,
+            6.28,
+            6.28
+          ]
+        }
+      },
+      "tailLen": {
+        "value": 1
+      },
+      "scale": {
+        "value": {
+          "$type": "Vector2",
+          "args": [
+            1,
+            1
+          ]
+        }
+      },
+      "rotMin": {
+        "value": {
+          "$type": "Vector3",
+          "args": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "rotMax": {
+        "value": {
+          "$type": "Vector3",
+          "args": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "rotRnd": {
+        "value": {
+          "$type": "Vector2",
+          "args": [
+            0,
+            0
+          ]
+        }
+      },
+      "gravityMin": {
+        "value": {
+          "$type": "Vector3",
+          "args": [
+            0,
+            -200,
+            0
+          ]
+        }
+      },
+      "gravityMax": {
+        "value": {
+          "$type": "Vector3",
+          "args": [
+            0,
+            -500,
+            0
+          ]
+        }
+      },
+      "blink": {
+        "value": {
+          "$type": "Vector3",
+          "args": [
+            0.2,
+            0.8,
+            5
+          ]
+        }
+      },
+      "imgNum": {
+        "value": 1
+      },
+      "seed": {
+        "value": 0
+      }
+    },
+    "defines": {
+      "DELTA_OFFSET": 0,
+      "USE_BEZIER": 2,
+      "USE_WIGGLE": 0,
+      "FOLLOW_PATH": 0,
+      "FOLLOW_SIZE": 0,
+      "USE_ROTATE": 0,
+      "USE_FADE": 0,
+      "USE_BLINK": 0,
+      "USE_GRAVITY": 0,
+      "USE_SCALE": 0,
+      "USE_SPRITE": 0,
+      "MULTI_IMGS": 0,
+      "LOOP_COUNT": 0
+    }
+  },
+  "DOF_BLUR": {
+    "vertexShader": "/web-extractor-replay-genshin/data/shaders/dof-blur.vert.glsl",
+    "fragmentShader": "/web-extractor-replay-genshin/data/shaders/dof-blur.frag.glsl",
+    "transparent": true,
+    "depthTest": false,
+    "depthWrite": false,
+    "side": 0,
+    "blending": 1,
+    "lights": false,
+    "wireframe": false,
+    "extensions": {
+      "derivatives": false
+    },
+    "uniforms": {
+      "resolution": {
+        "value": {
+          "$type": "Vector2",
+          "args": [
+            1024,
+            1024
+          ]
+        }
+      },
+      "blur": {
+        "value": 1
+      },
+      "angle": {
+        "value": 0
+      },
+      "offset": {
+        "value": {
+          "$type": "Vector2",
+          "args": [
+            0,
+            0
+          ]
+        }
+      },
+      "curve": {
+        "value": {
+          "$type": "Vector2",
+          "args": [
+            0,
+            1
+          ]
+        }
+      }
+    },
+    "defines": {}
+  },
+  "BLUR_DISPLAY": {
+    "vertexShader": "/web-extractor-replay-genshin/data/shaders/blur-display.vert.glsl",
+    "fragmentShader": "/web-extractor-replay-genshin/data/shaders/blur-display.frag.glsl",
+    "transparent": true,
+    "depthTest": false,
+    "depthWrite": false,
+    "side": 0,
+    "blending": 1,
+    "lights": false,
+    "wireframe": false,
+    "extensions": {
+      "derivatives": false
+    },
+    "uniforms": {
+      "map": {
+        "value": {
+          "$type": "GradientTexture",
+          "config": {
+            "color": [
+              {
+                "value": 16777215,
+                "percent": 0
+              },
+              {
+                "value": 0,
+                "percent": 100
+              }
+            ],
+            "alpha": [
+              {
+                "value": 100,
+                "percent": 0
+              }
+            ]
+          }
+        }
+      },
+      "angle": {
+        "value": 0
+      },
+      "blur": {
+        "value": 1
+      },
+      "offset": {
+        "value": {
+          "$type": "Vector2",
+          "args": [
+            0,
+            0
+          ]
+        }
+      },
+      "curve": {
+        "value": {
+          "$type": "Vector2",
+          "args": [
+            0,
+            1
+          ]
+        }
+      }
+    },
+    "defines": {
+      "USE_SPRITE": 0
+    }
+  },
+  "star_cloud_2": {
+    "vertexShader": "/web-extractor-replay-genshin/data/shaders/star-cloud-2.vert.glsl",
+    "fragmentShader": "/web-extractor-replay-genshin/data/shaders/star-cloud-2.frag.glsl",
+    "transparent": true,
+    "depthTest": false,
+    "depthWrite": false,
+    "side": 0,
+    "blending": 1,
+    "lights": false,
+    "wireframe": false,
+    "extensions": {
+      "derivatives": false
+    },
+    "uniforms": {
+      "progress": {
+        "value": 0
+      },
+      "pointInfo": {
+        "value": {
+          "$type": "Vector3",
+          "args": [
+            2,
+            2,
+            10
+          ]
+        }
+      },
+      "scale": {
+        "value": {
+          "$type": "Vector3",
+          "args": [
+            1,
+            1,
+            100
+          ]
+        }
+      },
+      "touch": {
+        "value": {
+          "$type": "Vector2",
+          "args": [
+            0,
+            0
+          ]
+        }
+      },
+      "opacity": {
+        "value": 1
+      }
+    },
+    "defines": {}
+  },
+  "SPINE_board": {
+    "vertexShader": "/web-extractor-replay-genshin/data/shaders/spine-board.vert.glsl",
+    "fragmentShader": "/web-extractor-replay-genshin/data/shaders/spine-board.frag.glsl",
+    "transparent": true,
+    "depthTest": false,
+    "depthWrite": false,
+    "side": 2,
+    "blending": 1,
+    "lights": false,
+    "wireframe": false,
+    "extensions": {
+      "derivatives": false
+    },
+    "uniforms": {
+      "opacity": {
+        "value": 1
+      },
+      "blendColor": {
+        "value": {
+          "$type": "Color",
+          "args": [
+            0
+          ]
+        }
+      },
+      "blendIntensity": {
+        "value": 0
+      },
+      "gradient": {
+        "value": {
+          "$type": "Vector3",
+          "args": [
+            0,
+            100,
+            0
+          ]
+        }
+      }
+    },
+    "defines": {
+      "ALPHA_TEST": 0,
+      "BLEND_MODE": 0,
+      "USE_GRADIENT": 0
+    }
+  },
+  "sdf_moon": {
+    "vertexShader": "/web-extractor-replay-genshin/data/shaders/sdf-moon.vert.glsl",
+    "fragmentShader": "/web-extractor-replay-genshin/data/shaders/sdf-moon.frag.glsl",
+    "transparent": true,
+    "depthTest": false,
+    "depthWrite": false,
+    "side": 0,
+    "blending": 1,
+    "lights": false,
+    "wireframe": false,
+    "extensions": {
+      "derivatives": false
+    },
+    "uniforms": {
+      "radius": {
+        "value": 80
+      },
+      "opacity": {
+        "value": 1
+      },
+      "lightFallOff": {
+        "value": {
+          "$type": "GradientTexture",
+          "config": {
+            "color": [
+              {
+                "value": 16777215,
+                "percent": 0
+              }
+            ],
+            "alpha": [
+              {
+                "value": 100,
+                "percent": 0
+              }
+            ]
+          }
+        }
+      },
+      "lightColor": {
+        "value": {
+          "$type": "Color",
+          "args": [
+            0
+          ]
+        }
+      },
+      "lightPower": {
+        "value": {
+          "$type": "Vector2",
+          "args": [
+            0,
+            0
+          ]
+        }
+      },
+      "lightDir": {
+        "value": {
+          "$type": "Vector3",
+          "args": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "speed": {
+        "value": 0.2
+      },
+      "xy_speed": {
+        "value": {
+          "$type": "Vector2",
+          "args": [
+            0,
+            0
+          ]
+        }
+      },
+      "innerGlowColor": {
+        "value": {
+          "$type": "Color",
+          "args": [
+            16777215
+          ]
+        }
+      },
+      "outGlowColor": {
+        "value": {
+          "$type": "Color",
+          "args": [
+            0
+          ]
+        }
+      },
+      "glowCurve": {
+        "value": {
+          "$type": "Vector4",
+          "args": [
+            -2,
+            0,
+            0,
+            1
+          ]
+        }
+      },
+      "alphaFallOff": {
+        "value": 0.1
+      }
+    },
+    "defines": {}
+  },
+  "tex_lookCamera": {
+    "vertexShader": "/web-extractor-replay-genshin/data/shaders/tex-lookcamera.vert.glsl",
+    "fragmentShader": "/web-extractor-replay-genshin/data/shaders/tex-lookcamera.frag.glsl",
+    "transparent": true,
+    "depthTest": false,
+    "depthWrite": false,
+    "side": 0,
+    "blending": 1,
+    "lights": false,
+    "wireframe": false,
+    "extensions": {
+      "derivatives": false
+    },
+    "uniforms": {
+      "opacity": {
+        "value": 1
+      }
+    },
+    "defines": {}
+  },
+  "NOISE_CONTAINER": {
+    "vertexShader": "/web-extractor-replay-genshin/data/shaders/noise-container.vert.glsl",
+    "fragmentShader": "/web-extractor-replay-genshin/data/shaders/noise-container.frag.glsl",
+    "transparent": true,
+    "depthTest": false,
+    "depthWrite": false,
+    "side": 0,
+    "blending": 1,
+    "lights": false,
+    "wireframe": false,
+    "extensions": {
+      "derivatives": false
+    },
+    "uniforms": {
+      "opacity": {
+        "value": 1
+      },
+      "noiseLevel": {
+        "value": {
+          "$type": "Vector2",
+          "args": [
+            0.05,
+            0.05
+          ]
+        }
+      },
+      "noiseSpeed": {
+        "value": {
+          "$type": "Vector2",
+          "args": [
+            0.01,
+            0.01
+          ]
+        }
+      },
+      "uvScale": {
+        "value": {
+          "$type": "Vector3",
+          "args": [
+            1,
+            1,
+            1
+          ]
+        }
+      },
+      "noiseCurve": {
+        "value": {
+          "$type": "Vector2",
+          "args": [
+            0,
+            1
+          ]
+        }
+      },
+      "noiseCenter": {
+        "value": {
+          "$type": "Vector2",
+          "args": [
+            0,
+            0
+          ]
+        }
+      },
+      "noiseScale": {
+        "value": {
+          "$type": "Vector2",
+          "args": [
+            1,
+            1
+          ]
+        }
+      },
+      "changeSpeed": {
+        "value": 1
+      },
+      "centerMaskOpacity": {
+        "value": 1
+      },
+      "centerMaskWidth": {
+        "value": 0.15
+      },
+      "speedMapLevel": {
+        "value": {
+          "$type": "Vector2",
+          "args": [
+            2,
+            2
+          ]
+        }
+      },
+      "speedMapCenter": {
+        "value": {
+          "$type": "Vector2",
+          "args": [
+            0.5,
+            0.5
+          ]
+        }
+      }
+    },
+    "defines": {
+      "USE_RING_UV": "0",
+      "USE_SCREEN_UV": "0",
+      "DEBUG_MODE": "0",
+      "X_NOISE": "0",
+      "Y_NOISE": "0",
+      "USE_LEVEL_MAP": "1",
+      "X_LEVEL_MAP": "1",
+      "Y_LEVEL_MAP": "1",
+      "USE_CHANGE": "0",
+      "USE_SPEED_MAP": "0",
+      "X_SPEED_MAP": "1",
+      "Y_SPEED_MAP": "1"
+    }
+  },
+  "BASIC_power_item": {
+    "vertexShader": "/web-extractor-replay-genshin/data/shaders/basic-power-item.vert.glsl",
+    "fragmentShader": "/web-extractor-replay-genshin/data/shaders/basic-power-item.frag.glsl",
+    "transparent": true,
+    "depthTest": true,
+    "depthWrite": true,
+    "side": 0,
+    "blending": 1,
+    "lights": false,
+    "wireframe": false,
+    "extensions": {
+      "derivatives": false
+    },
+    "uniforms": {
+      "opacity": {
+        "value": 1
+      },
+      "direct_speed": {
+        "value": {
+          "$type": "Vector3",
+          "args": [
+            -1,
+            -1,
+            0.5
+          ]
+        }
+      },
+      "strength": {
+        "value": 4
+      }
+    },
+    "defines": {}
+  },
+  "kuang": {
+    "vertexShader": "/web-extractor-replay-genshin/data/shaders/kuang.vert.glsl",
+    "fragmentShader": "/web-extractor-replay-genshin/data/shaders/kuang.frag.glsl",
+    "transparent": true,
+    "depthTest": true,
+    "depthWrite": true,
+    "side": 0,
+    "blending": 1,
+    "lights": false,
+    "wireframe": false,
+    "extensions": {
+      "derivatives": false
+    },
+    "uniforms": {
+      "grid": {
+        "value": {
+          "$type": "Vector2",
+          "args": [
+            4,
+            4
+          ]
+        }
+      }
+    },
+    "defines": {}
+  }
+}
