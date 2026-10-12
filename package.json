@@ -12,6 +12,7 @@
     "deploy:pages": "gh-pages -d dist --dotfiles -m \"Deploy reconstructed moon opening and first scene\"",
     "pack:assets": "node tools/pack-assets.cjs",
     "test": "node --test tests/*.test.js tests/*.test.cjs app/engine/*.test.cjs",
+    "test:core": "node --test tests/errors.test.js tests/layout.test.js tests/site-origin.test.cjs tests/startup.test.js tests/storage.test.js tests/scene-controller.test.js tests/ui.test.js tests/player-contract.test.cjs tests/renderer-core.test.cjs tests/source-loader.test.cjs tests/build-site.test.cjs tests/pack-assets.test.cjs app/engine/modifiers.test.cjs",
     "extract": "node tools/extract-engine.cjs && node tools/extract-scene.cjs",
     "verify:visual": "node scripts/verify-reconstruction.cjs",
     "verify:browser": "node scripts/reconstruction-smoke.cjs",
@@ -29,6 +30,10 @@
     "http-mitm-proxy": "^1.1.0"
   },
   "devDependencies": {
+    "@babel/generator": "7.29.8",
+    "@babel/parser": "7.29.9",
+    "@babel/traverse": "7.29.10",
+    "@babel/types": "7.29.8",
     "acorn": "^8.19.0",
     "gh-pages": "6.3.0",
     "prettier": "^3.9.9"

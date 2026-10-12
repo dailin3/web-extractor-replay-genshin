@@ -14,7 +14,11 @@
 `npm run build` 输出独立静态站点到 `dist/`；GitHub项目路径使用 `npm run build:pages`。
 部署方式见 [docs/deployment.md](docs/deployment.md)。
 
-页面、加载流程、场景控制器、粒子文字插件、遮罩/景深/CSS3D 与交互已组织成独立模块。原图片、字体、音频、GLSL、Spine 和关键帧数据保留；运行页面不加载原 index/styles/Vue 业务包。恢复的底层渲染包拆成59个静态 ES 模块，其内部编译变量名仍保留，第三方库使用捕获的原版本；具体边界见 [app/engine/PROVENANCE.md](app/engine/PROVENANCE.md)。
+页面、加载流程、场景控制器、粒子文字插件、遮罩/景深/CSS3D 与交互已组织成独立模块。原图片、字体、音频、GLSL、Spine 和关键帧数据保留；运行页面不加载原 index/styles/Vue 业务包。
+
+模块关系、职责、复用入口与关键时序约束见 [docs/modules.md](docs/modules.md)。文档区分新写的应用层、恢复的自定义渲染核心和捕获的库/素材；底层 59 个模块仍有需要继续整理的编译形态，来源见 [app/engine/PROVENANCE.md](app/engine/PROVENANCE.md)。
+
+完整分析过程见 [docs/reverse-engineering.md](docs/reverse-engineering.md)：HAR 能提供什么、如何定位模块和分离数据、WebGL/时序难点、可读性整理、实际失败及修复，以及每种验证的证据边界。
 
 当前范围为桌面横屏、中文：加载、开场、两段滚轮提示、月亮与三星、四段故事、音乐和简介。默认刷新重播，`?keepProgress` 保留进度。账户登录、外部分享服务、手机排版和后续章节未实现。
 
@@ -22,19 +26,22 @@
 
 ```bash
 npm test                  # 控制器、数据、渲染适配器、HTTP测试
+npm run test:core         # 无原抓包目录也能运行的维护代码/构建测试
 npm run verify:visual     # 原资源对照 vs 重构版，同时间逐像素比较
 npm run verify:browser    # 正常速度，实际点击四目标并关闭故事
 npm run verify:ui         # 简介键盘隔离、焦点与进入/退出动效
 npm run verify:startup    # 字体/WebGL失败与重试恢复
 npm run verify:introduction # 简介文字、排版与过渡逐像素对照
-npm run verify:engine     # 粒子、文字纹理、CSS3D、景深和遮罩算法对照
-npm run extract           # 离线重新生成场景/底层渲染模块
+npm run verify:engine     # 数值/纹理对照；景深和遮罩检查模拟renderer调用轨迹
+npm run extract           # 场景数据更新；原始引擎对照输出artifacts/reference-engine
 npm run verify:live       # 官方视觉源文件SHA256核对
 ```
 
 视觉验证使用 Playwright、pngjs 和 Chrome，优先使用已安装或 Codex 自带依赖。可设置 `BROWSER_MODULES`、`CHROME_PATH`、`RECONSTRUCTION_URL`。截图和报告位于 `artifacts/reconstruction/` 与 `artifacts/reconstruction-smoke/`。原回放验证报告不能替代重构版验收。结构与验证说明见 [docs/phase-one.md](docs/phase-one.md)。
 
-当前62项自动测试通过；子目录静态产物双尺寸主流程28/30个检查点零差，简介18/18零差。
+完整测试与原站对照需要本机 `projects/ys.mihoyo.com/` 捕获目录；普通启动、构建与 `test:core` 不需要它。
+
+部署前的子目录静态产物双尺寸主流程28/30个检查点零差，简介18/18零差。源码质量整理后的最新结果见 [docs/phase-one.md](docs/phase-one.md)。
 早期加载淡出仍有一个色阶的少量差异，严格零容差验收尚未通过；原站自身的同源控制也观察到同量级波动。详见上述验收说明。
 
 素材版权归米哈游，本项目用于本地研究。

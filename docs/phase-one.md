@@ -34,11 +34,14 @@ flowchart TD
 
 原美术素材、中文字体、GLSL、Spine骨骼与关键帧数值保留。离线工具将场景数据拆成
 JSON、GLSL和纹理文件，将原渲染包恢复成59个静态ES模块，去除工厂注册与chunk运行时。
-这些底层模块内部仍保留编译后的局部变量名；不是全部手写重实现。
+播放器、资源解码/重试、时间轴基类/工厂、服务聚合和场景查询已整理成维护入口；
+其余底层模块仍有编译后的局部变量名，并非全部手写重实现。职责见 [modules.md](modules.md)，
+从抓包到重构的详细过程见 [reverse-engineering.md](reverse-engineering.md)。
 第三方库保留捕获版本，Three.js含原渲染器的 `tick/afterRender` 扩展，不能直接换成
 普通r130分发版。详细来源与边界见 `app/engine/PROVENANCE.md`，数据见 `app/data/README.md`。
 
-`npm run extract` 可从仓库的捕获包重新生成引擎和数据，浏览器不执行这一步。
+`npm run extract` 从捕获包更新场景数据，把原始引擎对照写入 `artifacts/reference-engine`；
+禁止覆盖人工维护的 `app/engine`，浏览器不执行提取步骤。
 运行需要的104份原二进制素材已复制到 `app/local-assets/` 并保留原字节。
 `npm start` 和 `npm run build` 无需 `projects/`；独立静态产物为约16 MiB。
 重新提取、`npm run pack:assets` 和原站对照测试仍需要本机捕获目录及 `url_mapping.json`。
@@ -75,6 +78,7 @@ flowchart LR
 
 ```bash
 npm test
+npm run test:core
 npm run verify:visual
 npm run verify:browser
 npm run verify:ui
@@ -112,7 +116,8 @@ Howler零时长fade在冻结时钟下的0/0情况由双方相同测试适配处�
 官方 `popup_bg.eef4a833..png`，来源记录于 `app/ui-assets/README.md`。
 
 `app/engine/verify.browser.cjs` 独立比较原工厂与重写算法：粒子Float32缓冲、
-中文文字RGBA纹理、123次摆动更新、CSS3D变换、两帧五遍景深和遮罩渲染状态。
+中文文字RGBA纹理、123次摆动更新和CSS3D变换。景深/遮罩使用模拟renderer检查调用轨迹与状态，
+不直接证明GPU图像；部分局部对照共享底层依赖，整页对照仍不可省略。
 `verify:live` 只读比较原站12个关键视觉源文件的SHA256。
 
 浏览器工具优先使用项目依赖，或通过 `BROWSER_MODULES` 指定Playwright/pngjs位置；
@@ -125,6 +130,26 @@ Howler零时长fade在冻结时钟下的0/0情况由双方相同测试适配处�
 和 `artifacts/live-source.json`。旧 `artifacts/visual/` 是回放版本的历史报告，不能作为本次验收。
 
 ## 本次结果
+
+### 代码质量整理后的复验
+
+2026-10-12，本次新增语义整理、可靠性修复和提取保护后：
+
+- 完整回归102项通过；不含捕获目录的独立副本运行 `test:core`，57项通过。
+- 最终子目录静态产物两尺寸30/30个整页检查点严格零差，所有记录的轨道、画布与视口一致。
+  报告为 `artifacts/quality-final-static/report.json`。本轮零差不能替代下面保留的历史失败，
+  也不能推广为任意设备和任意时刻稳定零差。
+- 同一产物真实点击四目标、滚轮、故事关闭、音频、简介暂停/恢复通过，开场到提示15.713秒，
+  页面异常、失败/缺失资源和外部请求均为零。报告为 `artifacts/quality-final-smoke/report.json`。
+- 真实Chrome注入存储访问拒绝、清除拒绝和HTTP200坏PNG，三组均按预期处理；坏PNG尝试两次后显示
+  可见错误，解除注入并点击重新加载恢复。报告为 `artifacts/reliability-browser.json`。
+- 同轮此前的本地完整对照为28/30零差：加载41像素、高DPI淡出0.1秒26像素，均最大一个色阶，
+  报告为 `artifacts/quality-visual/report.json`，保留严格失败。
+
+源代码、模块说明和逆向过程文档一同维护；审查补出的输出目录内部/悬空符号链接覆盖问题
+已有失败测试和逐文件写入前检查。播放器与基类兼容行为另有测试，不能把总测试数当作全面引擎证明。
+
+### 先前验收记录
 
 2026-10-12 的默认Chrome/GPU复验结果：
 

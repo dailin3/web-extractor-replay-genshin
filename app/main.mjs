@@ -14,6 +14,7 @@ import { applyViewport, measureViewport } from "./layout.mjs";
 import { loadFont, OpeningFlow } from "./startup.mjs";
 import { createUI } from "./ui.mjs";
 import { showInitializationError } from "./errors.mjs";
+import { getProgressStorage } from "./storage.mjs";
 
 // The verifier inspects the authored application and its real scene timelines.
 const app = (window.__moonApp = {
@@ -26,9 +27,12 @@ async function initialize() {
   const data = await loadSceneData({ THREE, utils });
   const getWord = (key) => data.words[key] || "";
   await loadFont(data.font.src);
-  if (!new URLSearchParams(location.search).has("keepProgress")) {
-    localStorage.removeItem(MOON_PROGRESS_KEY);
-  }
+  const progressStorage = getProgressStorage({
+    getStorage: () => localStorage,
+    resetKey: new URLSearchParams(location.search).has("keepProgress")
+      ? undefined
+      : MOON_PROGRESS_KEY,
+  });
 
   const soundNames = {
     moon_in: "sound_moon_in_",
@@ -100,7 +104,7 @@ async function initialize() {
   const SceneMoon = createMoonSceneClass(THREE, {
     getWord,
     playSound,
-    storage: localStorage,
+    storage: progressStorage,
     onState: (state) => {
       app.state = state;
       ui.setState(state);
