@@ -1,0 +1,58 @@
+// Extracted rendering module: style-validation. See ../PROVENANCE.md.
+
+export const __esModule = true;
+let AllowedStyles,
+  AllowedWeights,
+  AllowedVariants,
+  AllowedStretches,
+  AllowedTextAligns,
+  AllowedWhiteSpace,
+  AllowedNewLines,
+  AllowedVerticalAlign,
+  AllowedLineHeights;
+('use strict');
+(void 0,
+  (AllowedStyles = new Set(['normal', 'italic'])),
+  (AllowedWeights = new Set([
+    '100',
+    '200',
+    '300',
+    '400',
+    '500',
+    '600',
+    '700',
+    '800',
+    '900',
+    'normal',
+    'bold',
+    'lighter',
+    'bolder',
+  ])),
+  (AllowedVariants = new Set(['normal', 'small-caps'])),
+  (AllowedStretches = new Set([
+    'ultra-condensed',
+    'extra-condensed',
+    'condensed',
+    'semi-condensed',
+    'normal',
+    'semi-expanded',
+    'expanded',
+    'extra-expanded',
+    'ultra-expanded',
+  ])),
+  (AllowedTextAligns = new Set(['left', 'center', 'right', 'justify'])),
+  (AllowedWhiteSpace = new Set(['collapse-all', 'collapse-outer'])),
+  (AllowedNewLines = new Set(['space', 'ignore', 'preserve'])),
+  (AllowedVerticalAlign = new Set(['middle', 'bottom'])),
+  (AllowedLineHeights = new Set(['static', 'varied'])));
+export {
+  AllowedStyles,
+  AllowedWeights,
+  AllowedVariants,
+  AllowedStretches,
+  AllowedTextAligns,
+  AllowedWhiteSpace,
+  AllowedNewLines,
+  AllowedVerticalAlign,
+  AllowedLineHeights,
+};

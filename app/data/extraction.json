@@ -1,0 +1,41 @@
+{
+  "source": "projects/ys.mihoyo.com/assets/index_44ff6b130c7baea7b639.js",
+  "sha256": "214f6758c577ee88967cab6e4741c9a7ac2a9980b7e7c25c9d9aa7aae0d35d0b",
+  "sourceModules": {
+    "layout": 50440,
+    "timelines": 1398,
+    "imagesAndSpines": 20444,
+    "materials": 1924
+  },
+  "scenes": [
+    "scene_ui",
+    "scene_loading",
+    "scene_moon",
+    "scene_moon_0",
+    "effect_dofBlur"
+  ],
+  "timelineNames": [
+    "points_text",
+    "p1",
+    "index_out",
+    "彩蛋1",
+    "story_text",
+    "story_ani",
+    "一期动画",
+    "p1_静止",
+    "p1_一期"
+  ],
+  "embeddedTextures": 83,
+  "imageSources": 174,
+  "spineNames": [
+    "click_xx",
+    "p3_mask_kuan_fg",
+    "p3_mask_sp",
+    "story_a",
+    "story_b",
+    "story_c",
+    "story_d",
+    "xingguai",
+    "xx"
+  ]
+}

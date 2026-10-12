@@ -4,31 +4,31 @@
 1. 可以通过HAR文件提取网页资源。
 2. 可以通过MITM在本地复现一个可以动的网页。
 
-## 「空月之歌」第一阶段复刻
+## 「空月之歌」开场和月亮首屏重构
+
+`npm start` 启动可读重构版，打开 http://127.0.0.1:4174。
+
+页面、加载流程、场景控制器、粒子文字插件、遮罩/景深/CSS3D 与交互已组织成独立模块。原图片、字体、音频、GLSL、Spine 和关键帧数据保留；运行页面不加载原 index/styles/Vue 业务包。恢复的底层渲染包拆成59个静态 ES 模块，其内部编译变量名仍保留，第三方库使用捕获的原版本；具体边界见 [app/engine/PROVENANCE.md](app/engine/PROVENANCE.md)。
+
+当前范围为桌面横屏、中文：加载、开场、两段滚轮提示、月亮与三星、四段故事、音乐和简介。默认刷新重播，`?keepProgress` 保留进度。账户登录、外部分享服务、手机排版和后续章节未实现。
+
+`replay/` 仅保留原业务包回放对照：`npm run start:reference`，端口4173。旧 `demo/` 和其他现有实验文件保留。
 
 ```bash
-npm start
-# 打开 http://127.0.0.1:4173
+npm test                  # 控制器、数据、渲染适配器、HTTP测试
+npm run verify:visual     # 原资源对照 vs 重构版，同时间逐像素比较
+npm run verify:browser    # 正常速度，实际点击四目标并关闭故事
+npm run verify:ui         # 简介键盘隔离、焦点与进入/退出动效
+npm run verify:startup    # 字体/WebGL失败与重试恢复
+npm run verify:introduction # 简介文字、排版与过渡逐像素对照
+npm run verify:engine     # 粒子、文字纹理、CSS3D、景深和遮罩算法对照
+npm run extract           # 离线重新生成场景/底层渲染模块
+npm run verify:live       # 官方视觉源文件SHA256核对
 ```
 
-`replay/` 直接运行已捕获的原版 WebGL、Spine、Shader、关键帧、字体和音频。
-开场、两段滚轮引导文字、月亮与三颗星星，以及四段点击文字均保留原生实现。
-资源全部从 `projects/ys.mihoyo.com` 读取，无需 MITM、证书或浏览器代理。
-第一阶段停留在月亮页。刷新默认重播开场，`?keepProgress` 保留访问进度。
+视觉验证使用 Playwright、pngjs 和 Chrome，优先使用已安装或 Codex 自带依赖。可设置 `BROWSER_MODULES`、`CHROME_PATH`、`RECONSTRUCTION_URL`。截图和报告位于 `artifacts/reconstruction/` 与 `artifacts/reconstruction-smoke/`。原回放验证报告不能替代重构版验收。结构与验证说明见 [docs/phase-one.md](docs/phase-one.md)。
 
-```bash
-npm test           # 资源映射、媒体范围请求和启动逻辑
-npm run verify:visual  # 原始资源与本地版本的固定时钟逐像素比较
-npm run verify:browser # 正常速度下点击、关闭四段文字并检查阶段边界
-npm run verify:live    # 核对当前线上视觉源文件的 SHA256
-```
-
-视觉验证使用 Playwright、pngjs 和 Chrome；优先使用现有安装，随后寻找 Codex
-自带依赖。自定义环境可设置 `BROWSER_MODULES`、`CHROME_PATH`、`REPLAY_URL`。
-验证截图和数值报告写入 `artifacts/visual/`。
-实现与验证说明见 [docs/phase-one.md](docs/phase-one.md)。
-
-原来的 `demo/` 保留为先前的近似实验，不是本阶段成果。素材版权归米哈游，本项目用于本地研究。
+素材版权归米哈游，本项目用于本地研究。
 
 以下网页已经过测试可行（）：
 - ✅ [原神官网首页](https://ys.mihoyo.com)

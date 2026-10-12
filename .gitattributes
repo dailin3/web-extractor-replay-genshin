@@ -1,0 +1,2 @@
+# Captured GLSL is preserved byte for byte for extraction and shader comparisons.
+app/data/shaders/*.glsl -whitespace

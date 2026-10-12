@@ -1,0 +1,20 @@
+{
+  "click_to_start": "点击开始",
+  "loading_number": "{num}%",
+  "loading_text": "",
+  "loading_tip": "",
+  "login": "登录",
+  "rules_title": "简介",
+  "rules_content": "<p style=\"white-space: pre-wrap; line-height: 2;\">浏览和分享「空月之歌」网页相关信息，可领取游戏内道具奖励。</p><p style=\"white-space: pre-wrap; min-height: 1.5em; line-height: 2;\"></p><p style=\"white-space: pre-wrap; line-height: 2;\">关于奖励领取：奖励发放持续时间为2025/3/10 9:10 至 2025/5/10 23:59。领取条件为冒险等阶≥2级。</p><p style=\"white-space: pre-wrap; line-height: 2;\">请各位旅行者登录米哈游通行证并绑定《原神》中的游戏角色参与活动，以保证活动奖励的正常发放与领取。</p><p style=\"white-space: pre-wrap; line-height: 2;\">奖励将通过游戏内邮件发放，邮件有效期为30天，请注意查收。</p>",
+  "loading_hint_0": "曾牵引着原初的天球,<br/>为一整个世界带来爱与热忱的三月女神早已逝去",
+  "loading_hint_1": "但追逐着潮汐的人们并未停止欢歌与祈祷，<br/>因为新的月神将要重临…",
+  "moon_text_0": "当「恒月」陨落，天地为之翻覆",
+  "moon_text_1": "当「虹月」破碎，赤影隐入渊海",
+  "moon_text_2": "当「霜月」停转，列邦归于沉沦",
+  "moon_text_3": "不再为「永恒」庇护的世界正走向终末，<br/>直到「新月」初升，牵动起命运的纺轮…",
+  "wheel_hint": "滑动鼠标滚轮继续",
+  "touch_hint": "上滑屏幕继续",
+  "sea_copyright": "",
+  "sea_privacy": "",
+  "sea_user_contract": ""
+}

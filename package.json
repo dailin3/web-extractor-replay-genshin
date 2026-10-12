@@ -4,10 +4,17 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "node replay/server.js",
-    "test": "node --test tests/*.test.js",
-    "verify:visual": "node scripts/verify-visual.cjs",
-    "verify:browser": "node scripts/browser-smoke.cjs",
+    "start": "node app-server.cjs",
+    "start:reference": "node replay/server.js",
+    "test": "node --test tests/*.test.js tests/*.test.cjs app/engine/*.test.cjs",
+    "extract": "node tools/extract-engine.cjs && node tools/extract-scene.cjs",
+    "verify:visual": "node scripts/verify-reconstruction.cjs",
+    "verify:browser": "node scripts/reconstruction-smoke.cjs",
+    "verify:ui": "node tests/ui.browser.cjs",
+    "verify:startup": "node tests/startup.browser.cjs",
+    "verify:introduction": "node scripts/verify-introduction.cjs",
+    "verify:engine": "node app/engine/verify.browser.cjs",
+    "verify:reference": "node scripts/verify-visual.cjs",
     "verify:live": "node scripts/verify-live-source.cjs"
   },
   "private": true,
@@ -15,5 +22,9 @@
     "commander": "^14.0.3",
     "express": "^5.2.1",
     "http-mitm-proxy": "^1.1.0"
+  },
+  "devDependencies": {
+    "acorn": "^8.19.0",
+    "prettier": "^3.9.9"
   }
 }

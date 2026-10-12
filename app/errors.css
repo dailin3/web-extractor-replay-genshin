@@ -1,0 +1,21 @@
+.startup-error {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #080a12;
+  color: #eee;
+  font: 16px/1.5 sans-serif;
+}
+.startup-error button {
+  padding: 10px 24px;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}

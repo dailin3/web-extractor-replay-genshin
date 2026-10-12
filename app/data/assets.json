@@ -1,0 +1,18 @@
+{
+  "uiAssets": {
+    "site_logo": "/local-assets/ccb4eb7dd8bcc1795ea19c65d2433a87_8156524976971408000.png",
+    "music_play_icon": "/local-assets/2902e4b4bc92a077e880314adbf02c3e_7354167915735199662.png",
+    "music_play_hover_icon": "/local-assets/37e087e6ac07e04ddafe77c1fc501c16_3494182763539997847.png",
+    "music_mute_icon": "/local-assets/9d5a8dcccb36e0c04cfbab377e7c1475_8331839349407590276.png",
+    "music_mute_hover_icon": "/local-assets/a8f6471de7bdd71edf90827ea222cdeb_1180018694923818232.png"
+  },
+  "soundAssets": {
+    "sound_btn": "/local-assets/sound_btn.6ffc26bc..mp3",
+    "sound_moon_in_": "/local-assets/sound_moon_in_.7eddf401..mp3",
+    "sound_power_in_": "/local-assets/sound_power_in_.d136576a..mp3",
+    "sound_text_hidden": "/local-assets/sound_text_hidden.2338f02a..mp3",
+    "sound_text_show": "/local-assets/sound_text_show.454560be..mp3",
+    "sound_star_show": "/local-assets/sound_star_show.5e69be7c..mp3",
+    "background": "/local-assets/kathisma_chrysopoleos.954f0179..mp3"
+  }
+}
